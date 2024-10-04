@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Page</title>
+    <script src="booking.js"></script>
+    <link rel="stylesheet" href="booking2.css">
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <div id="box1">
+                <form action="">
+                    <input type="text" placeholder="Full Name" class="text">
+                    <input type="text" placeholder="Mobile number" class="text">
+                    <input type="text" placeholder="Town/village" class="text">
+                    <input type="text" placeholder="Pin code" class="text">
+                    <input type="text" placeholder="District" class="text">
+                    <input type="text" placeholder="Detail address" id="detail">
+                    <input type="text" placeholder="Country" class="text">
+                    <input type="text" placeholder="State" class="text">
+                    <button id="go-back">Go back</button>
+                    <hr>
+                </form>
+            </div>
+            <div id="box2">
+                <div id="trash-list">
+                    <h2>Your Trash List</h2>
+                    <h4>Plastic x 1 kg - 15rs<span id="plasitcQuantity"></span></h4>
+                    <h4>Metal Scrap <span id="metalQuantity"></span></h4>
+                    <h4>Paper <span id="paperQuantity"></span></h4>
+                    <h4>Glass <span id="glassQuantity"></span></h4>
+                    <h4>E-Waste <span id="ewasteQuantity"></span></h4>
+                    
+                    <div id="price">
+                        <h2>Price</h2>
+                    </div>
+                    
+                    <hr>
+                    <h3>Total - 15rs</h3>
+                </div>
+                
+                <button id="btn" ><a href="after-login.html" style="text-decoration: none; color: white;">Book Pickup</a></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

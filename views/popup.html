@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Management Wallet</title>
+    <link rel="stylesheet" href="popup.css">
+    <script defer src="popup.js"></script>
+</head>
+<body>
+    <button id="openWalletBtn">Open Wallet</button>
+
+    <!-- Wallet Popup -->
+    <div id="walletPopup" class="popup">
+        <div class="popup-content">
+            <span class="closeBtn">&times;</span>
+            <h2>Your Recycling Wallet</h2>
+            <p class="total-amount">You have earned: $<span id="totalAmount">0</span> through recycling!</p>
+            <h3>Payment History</h3>
+            <ul id="paymentHistory">
+                <!-- Payment history items will be injected here -->
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+

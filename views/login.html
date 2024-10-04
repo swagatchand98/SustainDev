@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="login.css">
-</head>
-<body>
     
+</head>
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
 		<form action="#">
-			<h1>Create Account</h1>
-			
-			
+			<span>or use your email for registration</span>
 			<input type="text" placeholder="Name" />
 			<input type="email" placeholder="Email" />
 			<input type="password" placeholder="Password" />
@@ -23,23 +20,23 @@
 	<div class="form-container sign-in-container">
 		<form action="#">
 			<h1>Sign in</h1>
-			
+			<span>or use your account</span>
 			<input type="email" placeholder="Email" />
 			<input type="password" placeholder="Password" />
 			<a href="#">Forgot your password?</a>
-			<button>Sign In</button>
+			<button><a style="color: white;" href="after-login.html">Sign In</a></button>
 		</form>
 	</div>
 	<div class="overlay-container">
 		<div class="overlay">
 			<div class="overlay-panel overlay-left">
-				<img class="login-logo" src="/Assets/Images/Logo.jpg" alt="">
+                <img src="/Assets/Images/Logo.jpg" class="login-logo" alt="">
 				<h1>Welcome Back!</h1>
 				<p>To keep connected with us please login with your personal info</p>
 				<button class="ghost" id="signIn">Sign In</button>
 			</div>
 			<div class="overlay-panel overlay-right">
-				<img class="login-logo" src="/Assets/Images/Logo.jpg" alt="">
+                <img src="/Assets/Images/Logo.jpg" class="login-logo" alt="">
 				<h1>Hello, Friend!</h1>
 				<p>Enter your personal details and start journey with us</p>
 				<button class="ghost" id="signUp">Sign Up</button>
@@ -47,7 +44,7 @@
 		</div>
 	</div>
 </div>
-</body>
 
 <script src="login.js"></script>
+
 </html>
