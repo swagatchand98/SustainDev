@@ -11,22 +11,22 @@ interface ChooseWasteCardProps {
 
 const ChooseWasteCard : React.FC<ChooseWasteCardProps> = ({wasteName, wastePrice, img}) => {
 
-    return <div className="w-72 h-56 items-center border-2 rounded-2xl overflow-hidden">
-        <div className="font-judson text-2xl font-bold flex justify-center items-center py-4 px-2">
+    return <div className="w-72 h-56 items-center border-1 rounded-2xl overflow-hidden">
+        <div className="font-judson text-2xl flex justify-center items-center py-4 px-2">
             {`${wasteName} per kg. ₹${wastePrice}`}
         </div>
 
-        <div className="flex justify-between items-center py-2 px-10">
+        <div className="flex justify-between items-center py-2 px-15">
             <div>
-                <GoDash size={30} strokeWidth={0.5}/>
+                <GoDash size={30} strokeWidth={0.25}/>
             </div>
 
             <div className="">
-                <input readOnly className="w-20 h-10 text-2xl rounded-2xl border-none bg-gray-300 outline-none px-5 cursor-not-allowed [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" type="number" />
+                <input readOnly placeholder="in kg" className="w-20 h-10 text-2xl rounded-2xl border-none bg-white outline-black outline-1 px-5 cursor-not-allowed place-items-center placeholder:text-lg [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" type="number" />
             </div>
 
             <div>
-                <GoPlus size={30} strokeWidth={0.5}/>
+                <GoPlus size={30} strokeWidth={0.25}/>
             </div>
             
         </div>
