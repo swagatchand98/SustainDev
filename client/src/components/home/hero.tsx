@@ -4,7 +4,7 @@ import { BsArrowLeftCircle } from "react-icons/bs";
 const Hero: React.FC = () => {
   return (
     <div className="flex justify-center items-center h-screen w-screen bg-gradient-to-t from-green-gradient-2 to bg-green-gradient-1">
-      <div className="justify-items-center grid grid-cols-1 gap-y-">
+      <div className="justify-items-center grid grid-cols-1">
         <div className="flex justify-center items-center font-crimson text-4xl tracking-[0.25em] pt-50">
           MAKE OUR ENVIRONMENT
         </div>
