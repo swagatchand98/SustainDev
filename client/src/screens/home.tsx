@@ -1,9 +1,9 @@
+import Header from "../components/common/header"
 import Hero from "../components/home/hero";
 import ConfirmOrder from "../components/home/confirmOrder";
-import Header from "../components/common/header"
 import Services from "../components/home/services";
+import ContactUs from "../components/home/contactUs";
 import { BrowserRouter } from "react-router-dom";
-
 
 const Home : React.FC = () => {
 
@@ -13,6 +13,7 @@ const Home : React.FC = () => {
         <Hero/>
         <ConfirmOrder/>
         <Services/>
+        <ContactUs/>
         </BrowserRouter>
     </div>
 }

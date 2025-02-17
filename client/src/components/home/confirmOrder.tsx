@@ -18,7 +18,7 @@ const ConfirmOrder : React.FC = () => {
         </div>
 
         <div className="flex justify-center items-center w-64 h-16 m-10 text-white font-judson text-bold text-3xl rounded-2xl bg-green-500">
-            Confirm Order
+            Confirm Pickup
         </div>
     </div>
 }
