@@ -1,5 +1,6 @@
 import { GoPlus } from "react-icons/go";
 import { GoDash } from "react-icons/go";
+import { motion } from "motion/react";
 
 interface ChooseWasteCardProps {
   wasteName: string;
@@ -13,7 +14,10 @@ const ChooseWasteCard: React.FC<ChooseWasteCardProps> = ({
   img,
 }) => {
   return (
-    <div className="w-36 h-42 md:w-72 md:h-56 items-center border-1 rounded-2xl overflow-hidden">
+    <motion.div
+      className="w-36 h-42 md:w-72 md:h-56 items-center border-1 rounded-2xl overflow-hidden"
+      whileHover={{ scale: 1.05 }}
+    >
       <div className="font-judson text-lg text-center md:text-2xl flex justify-center items-center pt-2 md:py-4 px-3">
         {`${wasteName} per kg. ₹${wastePrice}`}
       </div>
@@ -40,7 +44,7 @@ const ChooseWasteCard: React.FC<ChooseWasteCardProps> = ({
       <div className="">
         <img className="w-144 h-14 md:w-288 md:h-28" src={img} alt="waste" />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

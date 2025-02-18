@@ -1,3 +1,5 @@
+import { motion } from "motion/react";
+
 const ContactUsForm: React.FC = () => {
   return (
     <div className="w-full h-full text-black p-2 md:p-4 lg:p-10 rounded-lg">
@@ -34,12 +36,13 @@ const ContactUsForm: React.FC = () => {
           className="p-1 h-20 md:h-30 text-black text-sm font-judson rounded bg-white "
           required
         />
-        <button
+        <motion.button
           type="submit"
-          className="bg-green-500 w-15 md:w-50 font-judson text-lg md:text-2xl text-white py-1 rounded transition"
+          className="bg-green-500 w-15 md:w-50 font-judson text-lg md:text-2xl text-white py-1 rounded transition cursor-pointer"
+          whileHover={{scale: 1.05}}
         >
           Send
-        </button>
+        </motion.button>
       </form>
     </div>
   );

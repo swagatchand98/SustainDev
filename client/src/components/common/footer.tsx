@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaSquareGithub } from "react-icons/fa6";
 import { FaInstagramSquare } from "react-icons/fa";
@@ -10,7 +11,7 @@ const Footer : React.FC = () => {
         
         <div className="flex justify-between itme-center pt-2 md:pt-5 pl-2 md:pl-10">
              <div className="p-3 w-50 md:w-80 h-40 md:h-42 lg:h-52">
-                <div>
+                <div className="cursor-pointer">
                     <img className="w-30 md:w-35 lg:w-48" src="/src/assets/logo.png" alt="" />
                 </div>
 
@@ -19,10 +20,10 @@ const Footer : React.FC = () => {
                 </div>
 
                 <div className="flex justify-between px-2 md:px-0 md:justify-evenly items-center w-48 py-4">
-                     <FaSquareXTwitter className="text-xl md:text-2xl"/> 
-                     <FaSquareGithub className="text-xl md:text-2xl"/> 
-                     <FaInstagramSquare className="text-xl md:text-2xl"/> 
-                     <FaSquareEnvelope className="text-xl md:text-2xl"/> 
+                     <FaSquareXTwitter className="text-xl md:text-2xl cursor-pointer hover:scale-120"/> 
+                     <FaSquareGithub className="text-xl md:text-2xl cursor-pointer hover:scale-120"/> 
+                     <FaInstagramSquare className="text-xl md:text-2xl cursor-pointer hover:scale-120"/> 
+                     <FaSquareEnvelope className="text-xl md:text-2xl cursor-pointer hover:scale-120"/> 
                 </div>
              </div>
             
@@ -34,10 +35,10 @@ const Footer : React.FC = () => {
                 
                 <div className="font-judson text-sm md:text-lg lg:text-xl">
                     <ul>
-                        <li>About</li>
-                        <li>features</li>
-                        <li>Works</li>
-                        <li>Career</li>
+                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>About</motion.li>
+                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>features</motion.li>
+                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>Works</motion.li>
+                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>Career</motion.li>
                     </ul>
                 </div>
              </div>
@@ -49,10 +50,10 @@ const Footer : React.FC = () => {
 
                 <div className="font-judson text-sm md:text-lg lg:text-xl">
                     <ul>
-                        <li>Customer Support</li>
-                        <li>Pickup Details</li>
-                        <li>Tersm & Conditions</li>
-                        <li>Privacy Policy</li>
+                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>Customer Support</motion.li>
+                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>Pickup Details</motion.li>
+                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>Tersm & Conditions</motion.li>
+                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>Privacy Policy</motion.li>
                     </ul>
                 </div>
              </div>

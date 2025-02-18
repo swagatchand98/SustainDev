@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import ChooseWasteCard from "./chooseWasteCard";
 
 const ConfirmOrder: React.FC = () => {
@@ -40,9 +41,12 @@ const ConfirmOrder: React.FC = () => {
         />
       </div>
 
-      <div className="flex justify-center items-center w-44 h-10 md:w-64 md:h-16 xs:m-10 text-white font-judson text-bold text-xl md:text-3xl rounded-2xl bg-green-500">
+      <motion.div
+        className="flex justify-center items-center w-44 h-10 md:w-64 md:h-16 xs:m-10 text-white font-judson text-bold text-xl md:text-3xl rounded-2xl bg-green-500 cursor-pointer"
+        whileHover={{ scale: 1.1 }}
+      >
         Confirm Pickup
-      </div>
+      </motion.div>
     </div>
   );
 };

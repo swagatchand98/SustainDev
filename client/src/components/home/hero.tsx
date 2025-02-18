@@ -1,5 +1,6 @@
 import { BsArrowRightCircle } from "react-icons/bs";
 import { BsArrowLeftCircle } from "react-icons/bs";
+import { motion } from "motion/react";
 
 const Hero: React.FC = () => {
   return (
@@ -42,9 +43,18 @@ const Hero: React.FC = () => {
           wallet and the Earth will thank you!
         </div>
 
-        <div className="flex justify-center items-center w-60 h-10 md:w-80 md:h-12 xl:w-105 xl:h-19 text-lg md:text-2xl xl:text-3xl text-white bg-green-500 rounded-3xl font-judson font-bold ">
+        <motion.div
+          className="flex justify-center items-center w-60 h-10 md:w-80 md:h-12 xl:w-105 xl:h-19 text-lg md:text-2xl xl:text-3xl text-white bg-green-500 rounded-3xl font-judson font-bold cursor-pointer"
+          whileHover={{
+            backgroundColor: "#1D820C",
+            scale: 1.05,
+            color: "white",
+            border: "none",
+          }}
+          transition={{ duration: 0.2 }}
+        >
           Start Recycling & Earning
-        </div>
+        </motion.div>
       </div>
     </div>
   );
