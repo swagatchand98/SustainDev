@@ -1,5 +1,4 @@
-const ContactUsForm : React.FC = () => {
-
+const ContactUsForm: React.FC = () => {
   return (
     <div className="w-full h-full text-black p-10 rounded-lg">
       <h2 className="text-3xl font-judson font-bold mb-2">Contact Us</h2>

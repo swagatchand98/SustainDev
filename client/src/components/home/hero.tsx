@@ -11,7 +11,11 @@ const Hero: React.FC = () => {
 
         <div className="flex justify-center lg:justify-between items-center w-screen px-10">
           <div className="hidden lg:block">
-            <BsArrowLeftCircle className="lg:text-5xl xl:text-7xl" color="black" opacity={0.5} />
+            <BsArrowLeftCircle
+              className="lg:text-5xl xl:text-7xl"
+              color="black"
+              opacity={0.5}
+            />
           </div>
 
           <div className="flex justify-center items-center xs:w-120 md:w-180 lg:w-220 xl:w-240">
@@ -19,7 +23,11 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="hidden lg:block">
-            <BsArrowRightCircle className="lg:text-5xl xl:text-7xl" color="black" opacity={0.5} />
+            <BsArrowRightCircle
+              className="lg:text-5xl xl:text-7xl"
+              color="black"
+              opacity={0.5}
+            />
           </div>
         </div>
 
