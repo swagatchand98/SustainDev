@@ -5,7 +5,7 @@ import { HeroImageContext } from "../../context/heroImageContext";
 import { useContext } from "react";
 
 const Hero: React.FC = () => {
-  const { heroImageIndex, prevIndex, nextHandler, prevHandler } =
+  const { heroImageIndex, prevIndex, nextHandler, prevHandler, setIsHovered } =
     useContext(HeroImageContext);
 
   const variants = {
@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
           MAKE OUR ENVIRONMENT
         </div>
 
-        <div className="flex justify-center lg:justify-between items-center w-screen xs:px-10">
+        <div className="flex justify-center lg:justify-between items-center w-screen xs:px-10" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
           <div onClick={prevHandler} className="hidden lg:block cursor-pointer">
             <BsArrowLeftCircle
               className="lg:text-5xl xl:text-7xl"

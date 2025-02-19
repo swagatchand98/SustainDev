@@ -1,10 +1,11 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react";
 
 interface heroImageContextType {
   heroImageIndex: number;
   prevIndex: number;
   nextHandler: () => void;
   prevHandler: () => void;
+  setIsHovered: Dispatch<SetStateAction<boolean>>
 }
 
 export const HeroImageContext = createContext<heroImageContextType>({
@@ -12,6 +13,7 @@ export const HeroImageContext = createContext<heroImageContextType>({
   prevIndex: 0,
   prevHandler: () => {},
   nextHandler: () => {},
+  setIsHovered: () => {}
 });
 
 export const HeroImageContextProvider: React.FC<{ children: ReactNode }> = ({
@@ -19,12 +21,19 @@ export const HeroImageContextProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [heroImageIndex, setHeroImageIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    setInterval(() => {
-      nextHandler();
+
+    if(isHovered) return;
+
+    const interval = setInterval(() => {
+      setPrevIndex(heroImageIndex);
+      setHeroImageIndex((prevIndex) => (prevIndex + 1) % 3);
     }, 10000);
-  }, []);
+
+    return () => clearInterval(interval);
+  }, [isHovered]);
 
   const nextHandler: () => void = () => {
     setPrevIndex(heroImageIndex);
@@ -40,7 +49,7 @@ export const HeroImageContextProvider: React.FC<{ children: ReactNode }> = ({
 
   return (
     <HeroImageContext.Provider
-      value={{ heroImageIndex, prevIndex, nextHandler, prevHandler }}
+      value={{ heroImageIndex, prevIndex, nextHandler, prevHandler, setIsHovered }}
     >
       {children}
     </HeroImageContext.Provider>
