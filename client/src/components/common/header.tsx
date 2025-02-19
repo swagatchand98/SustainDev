@@ -12,7 +12,7 @@ const Header: React.FC = () => {
   return (
     <div className="fixed min-w-screen h-12 md:h-15 xl:h-17 bg-transparent flex justify-center items-center pt-15 xs:pt-10 sm:pt-7 md:pt-10 xl:py-15 ">
       <motion.div
-        className="flex justify-between items-center w-90 xs:w-120 md:w-200 xl:w-350 h-12 md:h-15 xl:h-17 bg-opacity-15 rounded-full px-5 md:px-10 xl:px-30 "
+        className="flex justify-between items-center w-90 xs:w-120 md:w-200 xl:w-350 h-12 md:h-15 xl:h-17 bg-opacity-15 rounded-full px-5 md:px-10 xl:px-30 z-50"
         initial={{ backgroundColor: "#82EE7030" }}
         animate={{
           boxShadow: isScrolled
