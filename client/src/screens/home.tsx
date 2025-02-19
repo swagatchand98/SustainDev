@@ -6,12 +6,14 @@ import ContactUs from "../components/home/contactUs";
 import { IsScrolledContextProvider } from "../context/IsScrolledContext";
 import { BrowserRouter } from "react-router-dom";
 import HeroImageContextProvider from "../context/heroImageContext";
+import NavBarContextProvider from "../context/navBarContext";
 
 const Home: React.FC = () => {
   return (
     <div>
       <IsScrolledContextProvider>
       <HeroImageContextProvider>  
+      <NavBarContextProvider>
         <BrowserRouter>
           <Header />
           <Hero />
@@ -19,6 +21,7 @@ const Home: React.FC = () => {
           <Services />
           <ContactUs />
         </BrowserRouter>
+      </NavBarContextProvider>
       </HeroImageContextProvider>
       </IsScrolledContextProvider>
     </div>
