@@ -11,12 +11,15 @@ const Header: React.FC = () => {
   const { isNavBarOpen, toggleNavBar } = useContext(NavBarContext);
 
   return (
-    <div
+    <motion.div
       className={`transform transition-transform duration-1000 ease-in-out ${
         isNavBarOpen
           ? "fixed min-w-screen h-60 md:h-60 xl:h-60 bg-transparent flex justify-center items-center pt-15 xs:pt-10 sm:pt-7 md:pt-10 xl:py-15"
           : "fixed min-w-screen h-12 md:h-15 xl:h-17 bg-transparent flex justify-center items-center pt-15 xs:pt-10 sm:pt-7 md:pt-10 xl:py-15"
       }`}
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      transition={{duration: 1}}
     >
       <motion.div
         className={`transform transition-transform duration-1000 ease-in-out ${
@@ -106,7 +109,7 @@ const Header: React.FC = () => {
           )}
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

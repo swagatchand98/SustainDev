@@ -2,7 +2,11 @@ import { motion } from "motion/react";
 
 const ContactUsForm: React.FC = () => {
   return (
-    <div className="w-full h-full text-black p-2 md:p-4 lg:p-10 rounded-lg">
+    <motion.div className="w-full h-full text-black p-2 md:p-4 lg:p-10 rounded-lg"
+    initial={{opacity: 0}}
+    animate={{opacity: 1}}
+    transition={{duration: 1}}
+    >
       <h2 className="text-xl md:text-2xl lg:text-3xl font-judson font-bold mb-2">Contact Us</h2>
       <form className="flex flex-col space-y-3">
         <input
@@ -44,7 +48,7 @@ const ContactUsForm: React.FC = () => {
           Send
         </motion.button>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

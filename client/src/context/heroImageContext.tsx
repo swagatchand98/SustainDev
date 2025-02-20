@@ -43,8 +43,8 @@ export const HeroImageContextProvider: React.FC<{ children: ReactNode }> = ({
   const prevHandler: () => void = () => {
     setPrevIndex(heroImageIndex);
     heroImageIndex === 0
-      ? setHeroImageIndex((x) => (x = 2))
-      : setHeroImageIndex((x) => x - 1);
+      ? setHeroImageIndex(2)
+      : setHeroImageIndex(1);
   };
 
   return (
