@@ -1,4 +1,7 @@
 import ServiceCard from "./serviceCard";
+import recycle from "../../assets/recycle.jpeg"
+import tree from "../../assets/tree.jpg"
+import waste from "../../assets/waste-segregation.jpg"
 
 const Services: React.FC = () => {
   return (
@@ -6,17 +9,17 @@ const Services: React.FC = () => {
       <ServiceCard
         title="Recycling Services"
         body="We offer doorstep waste collection services with a focus on proper segregation. Our team ensures that recyclables, organic waste, and hazardous materials are separated efficiently, promoting eco-friendly disposal and reducing landfill waste."
-        img="src/assets/recycle.jpeg"
+        img={recycle}
       />
       <ServiceCard
         title="Waste Minimization and Consultation"
         body="Our advanced recycling services help transform waste materials into reusable resources. From plastics and metals to e-waste and paper, we ensure that collected items are processed responsibly, contributing to a circular economy and a cleaner environment."
-        img="src/assets/tree.jpg"
+        img={tree}
       />
       <ServiceCard
         title="Waste Collection and Segregation"
         body="Want to reduce waste at your home or business? Our waste minimization and consultation services provide expert guidance on sustainable practices, efficient resource utilization, and eco-friendly alternatives to help you cut down waste generation."
-        img="src/assets/waste-segregation.jpg"
+        img={waste}
       />
     </div>
   );

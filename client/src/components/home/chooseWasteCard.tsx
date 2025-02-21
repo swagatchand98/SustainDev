@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 interface ChooseWasteCardProps {
   wasteName: string;
-  wastePrice: Number;
+  wastePrice: number;
   img: string;
 }
 

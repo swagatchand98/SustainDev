@@ -1,6 +1,12 @@
 import { motion } from "motion/react";
 import ChooseWasteCard from "./chooseWasteCard";
 import ScrollReveal from "../../context/animationContext";
+import plastic from "../../assets/plastic.jpg"
+import paper from "../../assets/paper.webp"
+import metal from "../../assets/metal.jpg"
+import glass from "../../assets/glass.jpg"
+import eWaste from "../../assets/e-waste.jpg"
+import texttile from "../../assets/textile.jpg"
 
 const ConfirmOrder: React.FC = () => {
   return (
@@ -13,32 +19,32 @@ const ConfirmOrder: React.FC = () => {
         <ChooseWasteCard
           wasteName="Plastic"
           wastePrice={10}
-          img="/src/assets/plastic.jpg"
+          img={plastic}
         />
         <ChooseWasteCard
           wasteName="Paper"
           wastePrice={8}
-          img="/src/assets/paper.webp"
+          img={paper}
         />
         <ChooseWasteCard
           wasteName="Metal Scrap"
           wastePrice={25}
-          img="/src/assets/metal.jpg"
+          img={metal}
         />
         <ChooseWasteCard
           wasteName="Glass"
           wastePrice={20}
-          img="/src/assets/glass.jpg"
+          img={glass}
         />
         <ChooseWasteCard
           wasteName="E-waste"
           wastePrice={50}
-          img="/src/assets/e-waste.jpg"
+          img={eWaste}
         />
         <ChooseWasteCard
           wasteName="Textile Waste"
           wastePrice={20}
-          img="/src/assets/textile.jpg"
+          img={texttile}
         />
       </ScrollReveal>
 

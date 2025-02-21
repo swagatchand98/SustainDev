@@ -4,6 +4,9 @@ import { motion, AnimatePresence } from "motion/react";
 import { HeroImageContext } from "../../context/heroImageContext";
 import { useContext } from "react";
 import ScrollReveal from "../../context/animationContext";
+import green from "../../assets/green.png"
+import clean from "../../assets/clean.png"
+import sustainable from "../../assets/sustainable.png"
 
 const Hero: React.FC = () => {
   const { heroImageIndex, prevIndex, nextHandler, prevHandler, setIsHovered } =
@@ -63,7 +66,7 @@ const Hero: React.FC = () => {
             }}
             >
               <div className="xs:w-120 md:w-180 lg:w-220 xl:w-240">
-                <img src="/src/assets/green.png" alt="GREEN" />
+                <img src={green} alt="GREEN" />
               </div>
             </motion.div>
           )}
@@ -82,7 +85,7 @@ const Hero: React.FC = () => {
             }}
             >
               <div className="xs:w-120 md:w-180 lg:w-220 xl:w-240">
-                <img src="/src/assets/clean.png" alt="GREEN" />
+                <img src={clean} alt="GREEN" />
               </div>
             </motion.div>
           )}
@@ -101,7 +104,7 @@ const Hero: React.FC = () => {
             }}
             >
               <div className="xs:w-120 md:w-180 lg:w-220 xl:w-240">
-                <img src="/src/assets/sustainable.png" alt="GREEN" />
+                <img src={sustainable}   alt="GREEN" />
               </div>
             </motion.div>
           )}

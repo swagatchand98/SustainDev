@@ -5,6 +5,7 @@ import IsScrolledContext from "../../context/IsScrolledContext";
 import { NavBarContext } from "../../context/navBarContext";
 import { motion } from "motion/react";
 import { useContext } from "react";
+import logo from '../../assets/logo.png'
 
 const Header: React.FC = () => {
   const { isScrolled } = useContext(IsScrolledContext);
@@ -42,7 +43,7 @@ const Header: React.FC = () => {
         <div className="flex items-center cursor-pointer">
           <img
             className="w-30 md:w-40 xl:w-48"
-            src="/src/assets/logo.png"
+            src={logo}
             alt="sustaindev"
           />
         </div>

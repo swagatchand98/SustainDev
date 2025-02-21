@@ -3,6 +3,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaSquareGithub } from "react-icons/fa6";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaSquareEnvelope } from "react-icons/fa6";
+import logo from '../../assets/logo.png'
 
 
 const Footer : React.FC = () => {
@@ -12,7 +13,7 @@ const Footer : React.FC = () => {
         <div className="flex justify-between itme-center pt-2 md:pt-5 pl-2 md:pl-10">
              <div className="p-3 w-50 md:w-80 h-40 md:h-42 lg:h-52">
                 <div className="cursor-pointer">
-                    <img className="w-30 md:w-35 lg:w-48" src="/src/assets/logo.png" alt="" />
+                    <img className="w-30 md:w-35 lg:w-48" src={logo} alt="" />
                 </div>
 
                 <div className="font-judson text-lg md:text-xl lg:text-2xl p-2 lg:p-4">
