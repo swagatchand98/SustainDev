@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const LoginScreen: React.FC = () => {
   return (
     <div className="w-full h-screen flex justify-center items-center bg-gradient-to-b from-green-gradient-1 to bg-green-gradient-2">
-      <div className="flex-col place-items-center w-130 h-120 p-5 rounded-2xl bg-green-100 shadow-2xl">
+      <div className="flex-col place-items-center w-85 s:w-100 xs:w-130 h-120 p-5 rounded-2xl bg-green-100 shadow-2xl">
         {/* top of the signup comp */}
         <div className="relative flex justify-center items-center w-full">
           <div className="absolute top-0 left-0 col-span-1">
@@ -28,7 +28,7 @@ const LoginScreen: React.FC = () => {
               <input
                 type="email"
                 placeholder="your email"
-                className="w-100 bg-white h-10 rounded-lg px-2 text-lg font-judson"
+                className="w-75 s:w-90 xs:w-100 bg-white h-10 rounded-lg px-2 text-lg font-judson"
               />
             </div>
 
@@ -36,14 +36,14 @@ const LoginScreen: React.FC = () => {
               <input
                 type="password"
                 placeholder="password"
-                className="w-100 bg-white h-10 rounded-lg px-2 text-lg font-judson"
+                className="w-75 s:w-90 xs:w-100 bg-white h-10 rounded-lg px-2 text-lg font-judson"
               />
             </div>
           </form>
         </div>
 
         {/* sumbit part of the signup comp */}
-        <div className="flex-col justify-items-start w-100">
+        <div className="flex-col justify-items-start w-75 s:w-90 xs:w-100">
             <div className="flex items-center gap-x-4">
                 <div className="flex justify-center text-white items-center text-2xl font-judson w-25 h-10 rounded-lg bg-green-500">
                 <Link to={"#"}>Submit</Link>
