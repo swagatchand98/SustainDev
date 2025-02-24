@@ -8,33 +8,33 @@ import logo from '../../assets/logo.png'
 
 const Footer : React.FC = () => {
 
-    return <div className="w-screen h-55 md:h-70 bg-green-300">
+    return <div className="w-full h-33 xs:h-55 md:h-70 bg-green-300">
         
-        <div className="flex justify-between itme-center pt-2 md:pt-5 pl-2 md:pl-10">
-             <div className="p-1 xs:p-3 w-50 md:w-80 h-40 md:h-42 lg:h-52">
+        <div className="flex justify-between pt-2 md:pt-5 pl-2 md:pl-10">
+             <div className="p-3 w-40 md:w-80 h-25 xs:h-40 md:h-42 lg:h-52">
                 <div className="cursor-pointer">
-                    <img className="w-25 xs:w-30 md:w-35 lg:w-48" src={logo} alt="" />
+                    <img className="w-30 md:w-35 lg:w-48" src={logo} alt="" />
                 </div>
 
-                <div className="font-judson w-30 xs:w-auto text-sm xs:text-lg md:text-xl lg:text-2xl p-2 xs:p-2 lg:p-4">
+                <div className="font-judson text-sm xs:text-lg md:text-xl lg:text-2xl p-2 lg:p-4">
                     Get paid to recycle !
                 </div>
 
-                <div className="flex justify-between px-2 md:px-0 md:justify-evenly items-center w-30 xs:w-48 py-4">
-                     <FaSquareXTwitter className="text-sm xs:text-xl md:text-2xl cursor-pointer hover:scale-120"/> 
-                     <FaSquareGithub className="text-sm xs:text-xl md:text-2xl cursor-pointer hover:scale-120"/> 
-                     <FaInstagramSquare className="text-sm xs:text-xl md:text-2xl cursor-pointer hover:scale-120"/> 
-                     <FaSquareEnvelope className="text-sm xs:text-xl md:text-2xl cursor-pointer hover:scale-120"/> 
+                <div className="flex justify-between px-2 md:px-0 md:justify-evenly items-center w-35 xs:w-48 xs:py-4">
+                     <FaSquareXTwitter className="text-lg xs:text-xl md:text-2xl cursor-pointer hover:scale-120"/> 
+                     <FaSquareGithub className="text-lg xs:text-xl md:text-2xl cursor-pointer hover:scale-120"/> 
+                     <FaInstagramSquare className="text-lg xs:text-xl md:text-2xl cursor-pointer hover:scale-120"/> 
+                     <FaSquareEnvelope className="text-lg xs:text-xl md:text-2xl cursor-pointer hover:scale-120"/> 
                 </div>
              </div>
             
             <div className="flex justify-between item-center md:px-10 lg:px-0"> 
-             <div className="pt-1 xs:pt-2 md:p-2 w-20 h-15 xs:w-25 xs:h-20 md:w-40 md:h-42 lg:w-80 lg:h-52 ">
+             <div className="pt-2 md:p-2 w-20 xs:w-25 h-20 md:w-40 md:h-42 lg:w-80 lg:h-52 ">
                 <div className="font-judson text-sm md:text-lg lg:text-xl font-bold place-items-center">
                     Company
                 </div>
                 
-                <div className="font-judson text-[10px] xs:text-sm md:text-lg lg:text-xl">
+                <div className="font-judson text-xs md:text-lg lg:text-xl">
                     <ul>
                         <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>About</motion.li>
                         <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>features</motion.li>
@@ -44,16 +44,16 @@ const Footer : React.FC = () => {
                 </div>
              </div>
      
-             <div className="pt-1 xs:pt-2 md:p-2 w-25 h-20 md:w-45 md:h-42 lg:w-80 lg:h-52  ">
+             <div className="pt-2 md:p-2 w-25 h-20 md:w-45 md:h-42 lg:w-80 lg:h-52  ">
                 <div className="font-judson text-sm md:text-lg lg:text-xl font-bold place-items-center">
                     Help
                 </div>
 
-                <div className="font-judson text-[10px] text-sm md:text-lg lg:text-xl">
+                <div className="font-judson text-xs md:text-lg lg:text-xl">
                     <ul>
                         <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>Customer Support</motion.li>
                         <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>Pickup Details</motion.li>
-                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>Terms & Conditions</motion.li>
+                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>Term & Conditions</motion.li>
                         <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>Privacy Policy</motion.li>
                     </ul>
                 </div>
@@ -62,12 +62,12 @@ const Footer : React.FC = () => {
 
         </div>
 
-        <div className="w-screen flex justify-center items-center">
+        <div className="w-full flex justify-center items-center">
             <div className=" h-0.5 w-400 bg-gray-400 ">
             </div>
         </div>
 
-        <div className="flex justify-center items-center text-[10px] xs:text-sm py-3">
+        <div className="flex justify-center items-center text-[10px] xs:text-sm py-1 xs:py-3">
              © Copyright 2025, All Rights Reserved by SustainDev
         </div>
 

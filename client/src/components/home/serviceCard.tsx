@@ -9,10 +9,10 @@ interface ServiceCardProps {
 const ServiceCard: React.FC<ServiceCardProps> = ({ title, body, img }) => {
   return (
     <ScrollReveal
-      className="flex justify-center items-center mx-5 xs:mx-0"
+      className="flex justify-center items-center transition-transform mx-5 xs:mx-0 hover:scale-105"
       animation="fadeIn"
     >
-      <div className="w-108 h-60 md:w-75 md:h-150 lg:w-90 lg:h-180 xl:w-102 xl:h-190 p-5 justify-items-center overflow-hidden rounded-2xl border-1 md:mt-20">
+      <div className="w-85 h-60 md:w-75 md:h-150 lg:w-90 lg:h-180 xl:w-102 xl:h-190 p-5 justify-items-center overflow-hidden rounded-2xl border-1 md:mt-20">
         <div className="">
           <img
             className="w-30 h-20 md:w-auto md:h-auto"

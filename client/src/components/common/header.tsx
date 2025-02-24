@@ -15,8 +15,8 @@ const Header: React.FC = () => {
     <motion.div
       className={`transform transition-transform duration-1000 ease-in-out ${
         isNavBarOpen
-          ? "fixed min-w-screen h-60 md:h-60 xl:h-60 bg-transparent flex justify-center items-center pt-15 xs:pt-10 sm:pt-7 md:pt-10 xl:py-15"
-          : "fixed min-w-screen h-12 md:h-15 xl:h-17 bg-transparent flex justify-center items-center pt-15 xs:pt-10 sm:pt-7 md:pt-10 xl:py-15"
+          ? "fixed w-full h-60 md:h-60 xl:h-60 bg-transparent flex justify-center items-center pt-15 xs:pt-10 sm:pt-7 md:pt-10 xl:py-15"
+          : "fixed w-full h-12 md:h-15 xl:h-17 bg-transparent flex justify-center items-center pt-15 xs:pt-10 sm:pt-7 md:pt-10 xl:py-15"
       }`}
       initial={{opacity: 0}}
       animate={{opacity: 1}}
@@ -25,8 +25,8 @@ const Header: React.FC = () => {
       <motion.div
         className={`transform transition-transform duration-1000 ease-in-out ${
           isNavBarOpen
-            ? "items-start rounded-4xl w-90 xs:w-120 md:w-200 xl:w-350 h-60 md:h-60 xl:h-60 bg-opacity-50 pt-3 px-5 md:px-10 xl:px-30 z-50"
-            : "flex justify-between items-center rounded-full  w-90 xs:w-120 md:w-200 xl:w-350 h-12 md:h-15 xl:h-17 bg-opacity-15 px-5 md:px-10 xl:px-30 z-50"
+            ? "items-start rounded-4xl w-80 xs:w-120 md:w-200 xl:w-350 h-60 md:h-60 xl:h-60 bg-opacity-50 pt-3 px-5 md:px-10 xl:px-30 z-50"
+            : "flex justify-between items-center rounded-full w-80 xs:w-120 md:w-200 xl:w-350 h-12 md:h-15 xl:h-17 bg-opacity-15 px-5 md:px-10 xl:px-30 z-50"
         }`}
         initial={{ backgroundColor: "#82EE7030" }}
         animate={{

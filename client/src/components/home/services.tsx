@@ -5,7 +5,7 @@ import waste from "../../assets/waste-segregation.jpg"
 
 const Services: React.FC = () => {
   return (
-    <div className="grid grid-cols-1 md:flex justify-center items-center h-screen w-screen py-15 md:gap-x-5 lg:gap-x-10 xl:gap-x-20 bg-gradient-to-t from-green-gradient-2 to bg-green-gradient-1">
+    <div className="flex flex-col md:flex-row justify-center items-center h-screen w-full gap-y-5 pt-10 xs:pt-0 md:gap-x-5 lg:gap-x-10 xl:gap-x-20 bg-gradient-to-t from-green-gradient-2 to bg-green-gradient-1">
       <ServiceCard
         title="Recycling Services"
         body="We offer doorstep waste collection services with a focus on proper segregation. Our team ensures that recyclables, organic waste, and hazardous materials are separated efficiently, promoting eco-friendly disposal and reducing landfill waste."

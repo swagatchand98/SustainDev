@@ -10,8 +10,8 @@ import texttile from "../../assets/textile.jpg"
 
 const ConfirmOrder: React.FC = () => {
   return (
-    <div className="h-screen w-screen justify-items-center py-20 xs:py-0 bg-gradient-to-b from-green-gradient-2 to bg-green-gradient-1">
-      <ScrollReveal animation="fadeIn" className="flex justify-center items-center font-judson font-bold text-2xl md:text-4xl md:pt-35 lg:pt-35 xl:pt-40 md:p-5">
+    <div className="h-screen w-full justify-items-center bg-gradient-to-b from-green-gradient-2 to bg-green-gradient-1">
+      <ScrollReveal animation="fadeIn" className="flex justify-center items-center font-judson font-bold text-xl xs:text-2xl md:text-4xl md:pt-35 lg:pt-35 xl:pt-40 md:p-5">
         Choose Your Recyclable Waste Quantity
       </ScrollReveal>
 
