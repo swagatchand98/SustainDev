@@ -11,7 +11,7 @@ import texttile from "../../assets/textile.jpg"
 const ConfirmOrder: React.FC = () => {
   return (
     <div className="h-screen w-full justify-items-center bg-gradient-to-b from-green-gradient-2 to bg-green-gradient-1">
-      <ScrollReveal animation="fadeIn" className="flex justify-center items-center font-judson font-bold text-xl xs:text-2xl md:text-4xl md:pt-35 lg:pt-35 xl:pt-40 md:p-5">
+      <ScrollReveal animation="fadeIn" className="flex justify-center items-center font-judson font-bold text-xl s:text-2xl md:text-4xl md:pt-35 lg:pt-35 xl:pt-40 md:p-5">
         Choose Your Recyclable Waste Quantity
       </ScrollReveal>
 
@@ -54,7 +54,7 @@ const ConfirmOrder: React.FC = () => {
         initial={{opacity: 0}}
         animate={{opacity: 1}}
         transition={{
-          opacity: { duration: 1, ease: "easeInOut" },
+          opacity: { duration: 1, delay: 0.3, ease: "easeInOut" },
           scale: { duration: 0.2, ease: "easeOut" }
         }}
       >

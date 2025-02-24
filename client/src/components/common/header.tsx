@@ -20,13 +20,13 @@ const Header: React.FC = () => {
       }`}
       initial={{opacity: 0}}
       animate={{opacity: 1}}
-      transition={{duration: 1}}
+      transition={{duration: 1, delay: 0.3}}
     >
       <motion.div
         className={`transform transition-transform duration-1000 ease-in-out ${
           isNavBarOpen
-            ? "items-start rounded-4xl w-80 xs:w-120 md:w-200 xl:w-350 h-60 md:h-60 xl:h-60 bg-opacity-50 pt-3 px-5 md:px-10 xl:px-30 z-50"
-            : "flex justify-between items-center rounded-full w-80 xs:w-120 md:w-200 xl:w-350 h-12 md:h-15 xl:h-17 bg-opacity-15 px-5 md:px-10 xl:px-30 z-50"
+            ? "items-start rounded-4xl w-80 s:w-90 xs:w-120 md:w-200 xl:w-350 h-60 md:h-60 xl:h-60 bg-opacity-50 pt-3 px-5 md:px-10 xl:px-30 z-50"
+            : "flex justify-between items-center rounded-full w-80 s:w-90 xs:w-120 md:w-200 xl:w-350 h-12 md:h-15 xl:h-17 bg-opacity-15 px-5 md:px-10 xl:px-30 z-50"
         }`}
         initial={{ backgroundColor: "#82EE7030" }}
         animate={{
@@ -53,8 +53,8 @@ const Header: React.FC = () => {
             <motion.ul
               className={`${
                 isNavBarOpen
-                  ? "items-center text-lg lg:text-xl xl:text-2xl pt-5 font-judson font-extralight"
-                  : "hidden xl:flex justify-between items-center text-2xl font-judson font-extralight"
+                  ? "items-center text-lg lg:text-xl xl:text-2xl pt-5 font-judson font-extralight tracking-wide"
+                  : "hidden xl:flex justify-between items-center text-2xl font-judson font-extralight tracking-wide"
               }`}
               whileHover={{ scale: 1.02 }}
             >
@@ -67,7 +67,7 @@ const Header: React.FC = () => {
               </motion.li>
 
               <motion.li className="px-5" whileHover={{ scale: 1.1 }}>
-                <Link to={"/about-us"}>About-us</Link>
+                <Link to={"/Wallet"}>Wallet</Link>
               </motion.li>
 
               <motion.li className="px-5" whileHover={{ scale: 1.1 }}>

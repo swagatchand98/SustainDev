@@ -11,7 +11,7 @@ const animationVariants: Record<string, AnimationVariants> = {
       hidden: { opacity: 0 },
       visible: { 
         opacity: 1,
-        transition: { duration: 1 }
+        transition: { duration: 1, delay: 0.3 }
       }
     },
     slideUp: {

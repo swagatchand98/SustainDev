@@ -42,9 +42,10 @@ const Hero: React.FC = () => {
          onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
          initial={{opacity: 0}}
          animate={{opacity: 1}}
-         transition={{duration: 1}}
+         transition={{duration: 1, delay: 0.3}}
+         tabIndex={-1} //to prevent unwanted focus jump
          >
-          <div onClick={prevHandler} className="hidden lg:block cursor-pointer">
+          <div onClick={prevHandler} className="hidden lg:block cursor-pointer select-none">
             <BsArrowLeftCircle
               className="lg:text-5xl xl:text-7xl"
               color="black"
@@ -110,7 +111,7 @@ const Hero: React.FC = () => {
           )}
           </AnimatePresence>
 
-          <div onClick={nextHandler} className="hidden lg:block cursor-pointer">
+          <div onClick={nextHandler} className="hidden lg:block cursor-pointer select-none">
             <BsArrowRightCircle
               className="lg:text-5xl xl:text-7xl"
               color="black"
@@ -119,7 +120,7 @@ const Hero: React.FC = () => {
           </div>
         </motion.div>
 
-        <ScrollReveal className="flex justify-center w-90 md:w-150 lg:w-200 xl:w-290 xl:h-42 text-lg font-judson items-center text-center mb-20 mt-2 xs:mb-10 xs:mt-10 md:mb-15 xl:mb-15 xl:mt-10">
+        <ScrollReveal className="flex justify-center w-80 s:w-90 md:w-150 lg:w-200 xl:w-290 xl:h-42 text-sm s:text-lg font-judson items-center text-center mb-10 s:mb-20 mt-2 xs:mb-10 xs:mt-10 md:mb-15 xl:mb-15 xl:mt-10">
           Get Paid To Recycle ! Want to make a difference and get rewarded for
           it? Join the recycling revolution! By recycling, you're not only
           helping to save the planet, but you can also earn money! we pay
@@ -141,7 +142,7 @@ const Hero: React.FC = () => {
             border: "none",
           }}
           transition={{
-            opacity: { duration: 1, ease: "easeInOut" }, 
+            opacity: { duration: 1, ease: "easeInOut", delay: 0.3}, 
             scale: { duration: 0.2, ease: "easeOut" },
           }}
         >

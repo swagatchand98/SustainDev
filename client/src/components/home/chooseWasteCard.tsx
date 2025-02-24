@@ -1,6 +1,7 @@
 import { GoPlus } from "react-icons/go";
 import { GoDash } from "react-icons/go";
 import { motion } from "motion/react";
+import { useState } from "react";
 
 interface ChooseWasteCardProps {
   wasteName: string;
@@ -13,6 +14,20 @@ const ChooseWasteCard: React.FC<ChooseWasteCardProps> = ({
   wastePrice,
   img,
 }) => {
+  const [value, setValue] = useState(0);
+
+  const increment = () => {
+    setValue(x => x + 1);
+  };
+
+  const decrement = () => {
+    if(value == 0){
+      return;
+    }else {
+      setValue(x => x - 1);
+    }
+  }
+
   return (
     <motion.div
       className="w-36 h-42 md:w-72 md:h-56 items-center border-1 rounded-2xl overflow-hidden"
@@ -23,20 +38,22 @@ const ChooseWasteCard: React.FC<ChooseWasteCardProps> = ({
       </div>
 
       <div className="flex justify-between items-center py-2 px-5 md:px-15">
-        <div>
+        <div onClick={decrement} className="select-none cursor-pointer">
           <GoDash className="text-xl md:text-3xl" strokeWidth={0.25} />
         </div>
 
         <div className="">
           <input
+            className="w-10 h-10 md:w-20 md:h-10 text-lg md:text-2xl rounded-xl border-none bg-white outline-black outline-1 px-1 md:px-5 cursor-not-allowed place-items-center placeholder:text-sm md:placeholder:text-lg [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
             readOnly
             placeholder="in kg"
-            className="w-10 h-10 md:w-20 md:h-10 text-lg md:text-2xl rounded-xl border-none bg-white outline-black outline-1 px-1 md:px-5 cursor-not-allowed place-items-center placeholder:text-sm md:placeholder:text-lg [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+            min={0}
+            value={value}
             type="number"
           />
         </div>
 
-        <div>
+        <div onClick={increment} className="select-none cursor-pointer">
           <GoPlus className="text-xl md:text-3xl" strokeWidth={0.25} />
         </div>
       </div>

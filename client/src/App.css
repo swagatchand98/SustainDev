@@ -9,5 +9,6 @@
     --color-green-300: #82EE7070;
     --color-green-gradient-1: #D9D9D9;
     --color-green-gradient-2: #BEFFB4;
+    --breakpoint-s: 400px;
     --breakpoint-xs: 480px;
 }
