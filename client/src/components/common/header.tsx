@@ -92,7 +92,7 @@ const Header: React.FC = () => {
           }}
           transition={{ duration: 0.2 }}
         >
-          <Link to={"/login"}>Sign Up / Log in</Link>
+          <Link to={"/signup"}>Sign Up / Log in</Link>
         </motion.div>
 
         <div
