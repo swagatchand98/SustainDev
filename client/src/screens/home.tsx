@@ -6,6 +6,7 @@ import ContactUs from "../components/home/contactUs";
 import { IsScrolledContextProvider } from "../context/IsScrolledContext";
 import HeroImageContextProvider from "../context/heroImageContext";
 import NavBarContextProvider from "../context/navBarContext";
+import { Outlet } from "react-router-dom";
 
 const Home: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const Home: React.FC = () => {
           <ConfirmOrder />
           <Services />
           <ContactUs />
+          <Outlet/>
       </NavBarContextProvider>
       </HeroImageContextProvider>
       </IsScrolledContextProvider>

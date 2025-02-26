@@ -12,7 +12,7 @@ const LoginScreen: React.FC = () => {
   return (
     <div className="w-full h-screen flex justify-center items-center bg-gradient-to-b from-green-gradient-1 to bg-green-gradient-2">
       <div className="flex-col place-items-center w-70 s:w-80 xs:w-130 h-90 xs:h-120 p-5 rounded-2xl bg-green-100 shadow-2xl">
-        {/* top of the signup comp */}
+        {/* top of the login comp */}
         <div className="relative flex justify-center items-center w-full cursor-pointer">
           <div
             onClick={() => navigate(-1)}
@@ -28,7 +28,7 @@ const LoginScreen: React.FC = () => {
 
         <div className="h-[1px] bg-gray-500 w-full my-3"></div>
 
-        {/* form part of the signup comp */}
+        {/* form part of the login comp */}
         <div className="flex justify-center items-center py-14 xs:py-22">
           <form className="flex-col space-y-3 xs:space-y-5">
             <div>
@@ -62,7 +62,7 @@ const LoginScreen: React.FC = () => {
           </form>
         </div>
 
-        {/* sumbit part of the signup comp */}
+        {/* sumbit part of the loginc comp */}
         <div className="flex-col justify-items-start w-60 s:w-70 xs:w-100">
           <div className="flex items-center gap-x-4">
             <div className="flex justify-center text-white items-center text-xl xs:text-2xl font-judson w-20 xs:w-25 h-10 rounded-lg bg-green-500">

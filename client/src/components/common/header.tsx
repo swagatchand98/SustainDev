@@ -67,7 +67,7 @@ const Header: React.FC = () => {
               </motion.li>
 
               <motion.li className="px-5" whileHover={{ scale: 1.1 }}>
-                <Link to={"/Wallet"}>Wallet</Link>
+                <Link to={"/wallet"}>Wallet</Link>
               </motion.li>
 
               <motion.li className="px-5" whileHover={{ scale: 1.1 }}>
