@@ -9,9 +9,8 @@ const App: React.FC = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />}>
-          <Route path="wallet" element={<Wallet />} /> {/* Nested inside Home */}
+          <Route path="wallet" element={<Wallet />}/>
         </Route>
-
         <Route path="/signup" element={<SignupScreen />} />
         <Route path="/login" element={<LoginScreen />} />
       </Routes>
