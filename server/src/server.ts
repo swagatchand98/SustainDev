@@ -1,6 +1,7 @@
 import express from "express"
 import config from "./config/env"
 import cors from "cors"
+import cookieParser from "cookie-parser";
 
 import connectDB from "./config/db";
 import signupRouter from "./routes/auth/signupRouter"
@@ -10,6 +11,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);

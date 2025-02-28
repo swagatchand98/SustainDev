@@ -1,12 +1,11 @@
+import { NextFunction, Request, Response } from "express";
 import express from "express";
 import userModel from "../../db/users";
 import bcrypt from "bcrypt";
 
-const app = express();
-app.use(express.json());
 const signupRouter = express.Router();
 
-export default signupRouter.post("/", async (req, res) => {
+export default signupRouter.post("/", async ( req : Request, res : Response ) => {
   try {
     const { username, email, password } = req.body;
 
@@ -36,6 +35,7 @@ export default signupRouter.post("/", async (req, res) => {
 
     res.status(201).json({ message: "user created successfully" });
     return;
+    
   } catch (e) {
     console.error("erorr:", e);
     res.status(500).json({ error: "server error" });
