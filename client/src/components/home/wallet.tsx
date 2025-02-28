@@ -1,20 +1,23 @@
 import { RxCross2 } from "react-icons/rx";
 import { FcSalesPerformance } from "react-icons/fc";
+import { useNavigate } from "react-router-dom";
 
 const Wallet : React.FC = () => {
 
-    return <div className="flex justify-center items-center w-full h-screen bg-transparent backdrop-blur-2xl z-999">
-        <div className="w-100 h-80 bg-green-300 shadow-2xl z-999 rounded-2xl p-2">
-            <div className="flex justify-center items-center relative">
+    const navigate = useNavigate();
+
+    return <div className="fixed inset-0 flex justify-center items-center w-full h-screen bg-transparent backdrop-blur-sm z-60">
+        <div className="w-100 h-80 bg-[#BEFEB4] shadow-2xl z-50 rounded-2xl p-2 ">
+            <div className="flex justify-between items-center px-3">
                 <div className="text-2xl font-judson font-bold">
                     Wallet
                 </div>
-                <RxCross2 className="absolute top-0 right-0 text-xl"/>
+                <RxCross2 onClick={() => {navigate(-1)}} className="text-xl cursor-pointer"/>
             </div>
 
             <div className="h-[1px] w-full bg-black my-1"></div>
 
-            <div className="flex justify-center items-center w-full h-25 text-4xl font-judson font-bold text-orange-700 gap-x-2">
+            <div className="flex justify-center items-center w-full h-25 text-4xl font-judson font-bold text-amber-700 gap-x-2">
                 100 Coins <FcSalesPerformance/>
             </div>
 
