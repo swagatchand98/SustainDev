@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import connectDB from "./config/db";
 import signupRouter from "./routes/auth/signupRouter"
 import loginRouter from "./routes/auth/loginRouter";
+import userRouter from "./routes/user/userRouter";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(cookieParser());
 
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
+app.use('/user', userRouter);
 
 const startServer = async() => {
     try{

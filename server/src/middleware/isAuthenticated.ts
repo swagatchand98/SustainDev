@@ -7,13 +7,27 @@ import userModel from "../db/users";
 const app = express();
 app.use(express.json());
 
-interface CustomRequest extends Request{
-    username: String,
-    email: String,
-    createdAt: Date,
+// interface CustomRequest extends Request{
+//     username?: String,
+//     email?: String,
+//     createdAt?: Date,
+// }
+
+interface UserPayload {
+    username: string;
+    email: string;
+    createdAt: Date;
 }
 
-const isAuthenticated = async( req : CustomRequest , res : Response , next : NextFunction ) => {
+declare global{
+    namespace Express {
+        interface Request {
+            user?: UserPayload;
+        }
+    }
+}
+
+const isAuthenticated = async( req : Request , res : Response , next : NextFunction ) => {
     
     try{
         const { token } = req.cookies;
@@ -30,14 +44,11 @@ const isAuthenticated = async( req : CustomRequest , res : Response , next : Nex
             return;
         }
     
-        const user = await userModel.findById({userId});
+        const decoded = await userModel.findById(userId);
     
-        if(user){
-            req.username = user.username;
-            req.email = user.email;
-            req.createdAt = user.createdAt;
-
-            res.json({ message: "Access granted!"});
+        if(decoded){
+            
+            req.user = decoded;
             next()
         }else{
             res.status(401).json({ error: "user not found"});

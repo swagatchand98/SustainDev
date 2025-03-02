@@ -11,7 +11,7 @@ export default signupRouter.post("/", async ( req : Request, res : Response ) =>
 
     if (!username || !email || !password) {
       res
-        .status(400)
+        .status(411)
         .json({ error: "username , email, and password are required" });
       return;
     }
@@ -21,7 +21,7 @@ export default signupRouter.post("/", async ( req : Request, res : Response ) =>
     });
 
     if (existingUser) {
-      res.status(400).json({ error: "email already exists !" });
+      res.status(403).json({ error: "email already exists !" });
       return;
     }
 
@@ -33,7 +33,7 @@ export default signupRouter.post("/", async ( req : Request, res : Response ) =>
       password: hashedPassword,
     });
 
-    res.status(201).json({ message: "user created successfully" });
+    res.status(200).json({ message: "user created successfully" });
     return;
     
   } catch (e) {
