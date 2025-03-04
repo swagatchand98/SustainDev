@@ -35,9 +35,7 @@ export interface Iuser extends Document {
 }
 
 const coin = new schema<Icoin>({
-  coin: {
-    type: Number,
-  },
+  coin: Number,
   transictionTime: {
     type: Date,
     default: Date.now,
