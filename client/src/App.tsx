@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./screens/home";
-import SignupScreen from "./screens/signupScreen";
-import LoginScreen from "./screens/loginScreen";
+import { LoginScreen, SignupScreen } from "./screens/Auth";
 import Wallet from "./components/home/wallet";
+import SchedulePickup from "./components/home/schedulePickup";
 
 const App: React.FC = () => {
   return (
@@ -11,6 +11,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />}>
           <Route path="wallet" element={<Wallet />}/>
         </Route>
+        <Route path="/Schedule-Pickup" element={<SchedulePickup/>}/>
         <Route path="/signup" element={<SignupScreen />} />
         <Route path="/login" element={<LoginScreen />} />
       </Routes>
