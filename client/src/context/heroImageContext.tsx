@@ -1,55 +1,97 @@
-import { createContext, Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react";
+import { createContext, Dispatch, ReactNode, SetStateAction, useEffect, useState, useCallback } from "react";
 
-interface heroImageContextType {
-  heroImageIndex: number;
-  prevIndex: number;
-  nextHandler: () => void;
-  prevHandler: () => void;
-  setIsHovered: Dispatch<SetStateAction<boolean>>
+interface HeroImage {
+  id: number;
+  url: string;
+  alt: string;
 }
 
-export const HeroImageContext = createContext<heroImageContextType>({
+const TOTAL_HERO_IMAGES = 3;
+
+interface HeroImageContextType {
+  heroImageIndex: number;
+  prevIndex: number;
+  images: HeroImage[];
+  nextHandler: () => void;
+  prevHandler: () => void;
+  setIsHovered: Dispatch<SetStateAction<boolean>>;
+  isHovered: boolean;
+  isAutoPlaying: boolean;
+  setIsAutoPlaying: Dispatch<SetStateAction<boolean>>;
+}
+
+const defaultImages: HeroImage[] = [
+  { id: 0, url: "/images/hero-1.jpg", alt: "Hero image 1" },
+  { id: 1, url: "/images/hero-2.jpg", alt: "Hero image 2" },
+  { id: 2, url: "/images/hero-3.jpg", alt: "Hero image 3" },
+];
+
+export const HeroImageContext = createContext<HeroImageContextType>({
   heroImageIndex: 0,
   prevIndex: 0,
+  images: defaultImages,
   prevHandler: () => {},
   nextHandler: () => {},
-  setIsHovered: () => {}
+  setIsHovered: () => {},
+  isHovered: false,
+  isAutoPlaying: true,
+  setIsAutoPlaying: () => {}
 });
 
-export const HeroImageContextProvider: React.FC<{ children: ReactNode }> = ({
+interface HeroImageContextProviderProps {
+  children: ReactNode;
+  initialIndex?: number;
+  autoPlayInterval?: number;
+  images?: HeroImage[];
+}
+
+export const HeroImageContextProvider: React.FC<HeroImageContextProviderProps> = ({
   children,
+  initialIndex = 0,
+  autoPlayInterval = 10000,
+  images = defaultImages
 }) => {
-  const [heroImageIndex, setHeroImageIndex] = useState(0);
-  const [prevIndex, setPrevIndex] = useState(0);
+  const [heroImageIndex, setHeroImageIndex] = useState(initialIndex);
+  const [prevIndex, setPrevIndex] = useState(initialIndex);
   const [isHovered, setIsHovered] = useState(false);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  
+  const nextHandler = useCallback(() => {
+    setPrevIndex(heroImageIndex);
+    setHeroImageIndex((prevIndex) => (prevIndex + 1) % TOTAL_HERO_IMAGES);
+  }, [heroImageIndex]);
+
+  const prevHandler = useCallback(() => {
+    setPrevIndex(heroImageIndex);
+    setHeroImageIndex((currentIndex) => 
+      currentIndex === 0 ? TOTAL_HERO_IMAGES - 1 : currentIndex - 1
+    );
+  }, [heroImageIndex]);
 
   useEffect(() => {
-
-    if(isHovered) return;
+    if (isHovered || !isAutoPlaying) return;
 
     const interval = setInterval(() => {
       setPrevIndex(heroImageIndex);
-      setHeroImageIndex((prevIndex) => (prevIndex + 1) % 3);
-    }, 10000);
+      setHeroImageIndex((prevIndex) => (prevIndex + 1) % TOTAL_HERO_IMAGES);
+    }, autoPlayInterval);
 
     return () => clearInterval(interval);
-  }, [isHovered]);
-
-  const nextHandler: () => void = () => {
-    setPrevIndex(heroImageIndex);
-    setHeroImageIndex((x) => (x + 1) % 3);
-  };
-
-  const prevHandler: () => void = () => {
-    setPrevIndex(heroImageIndex);
-    heroImageIndex === 0
-      ? setHeroImageIndex(2)
-      : setHeroImageIndex(1);
-  };
+  }, [isHovered, isAutoPlaying, heroImageIndex, autoPlayInterval]);
 
   return (
     <HeroImageContext.Provider
-      value={{ heroImageIndex, prevIndex, nextHandler, prevHandler, setIsHovered }}
+      value={{ 
+        heroImageIndex, 
+        prevIndex, 
+        nextHandler, 
+        prevHandler, 
+        setIsHovered,
+        isHovered,
+        images,
+        isAutoPlaying,
+        setIsAutoPlaying
+      }}
     >
       {children}
     </HeroImageContext.Provider>
