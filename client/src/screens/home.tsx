@@ -4,6 +4,7 @@ import { IsScrolledContextProvider } from "../context/IsScrolledContext";
 import HeroImageContextProvider from "../context/heroImageContext";
 import NavBarContextProvider from "../context/navBarContext";
 import { Outlet } from "react-router-dom";
+import WhyUs from "../components/home/whyUs";
 
 const Hero = lazy(() => import("../components/home/hero"));
 const Services = lazy(() => import("../components/home/services"));
@@ -20,6 +21,7 @@ const Home: React.FC = () => {
             <main>
               <Hero />
               <Services />
+              <WhyUs/>
               <ContactUs />
             </main>
             <Outlet/>
