@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 
 const ContactUsForm: React.FC = () => {
   return (
-    <motion.div className="w-full h-full text-black p-2 md:p-4 lg:p-10 rounded-lg"
+    <motion.div className="w-full h-full bg-green-100 text-black p-2 md:p-4 lg:p-10 rounded-lg"
     initial={{opacity: 0}}
     animate={{opacity: 1}}
     transition={{duration: 1}}
