@@ -1,15 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { HiOutlineArrowLeft } from "react-icons/hi";
 import { Link, useNavigate } from "react-router-dom";
-
-// Common interface for form inputs
-interface FormInput {
-  value: string;
-  isValid: boolean;
-  errorMessage: string;
-}
 
 // Form component to reduce duplication between login/signup
 interface AuthFormProps {
