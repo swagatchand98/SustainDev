@@ -13,7 +13,7 @@ const ServiceCard: React.FC<ServiceCardProps> = memo(({ title, body, img }) => {
       className="flex justify-center items-center transition-transform duration-300 mx-5 xs:mx-0 hover:scale-102"
       animation="fadeIn"
     >
-      <div className="w-70 h-150 s:w-100 md:w-80 lg:w-96 xl:w-102 p-5 flex flex-col items-center overflow-hidden rounded-2xl border border-gray-200 shadow-xl bg-white/90 backdrop-blur-sm mx-5">
+      <div className="w-70 h-150 s:w-100 md:w-80 lg:w-96 xl:w-102 p-5 flex flex-col items-center overflow-hidden rounded-2xl border border-gray-200 shadow-lg bg-white/10 backdrop-blur-sm mx-5">
         <div className="mb-4 overflow-hidden rounded-lg">
           <img
             className="w-full h-auto object-cover transition-transform hover:scale-105"
