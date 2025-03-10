@@ -11,6 +11,13 @@ const Header: React.FC = () => {
   const { isScrolled } = useContext(IsScrolledContext);
   const { isNavBarOpen, toggleNavBar } = useContext(NavBarContext);
 
+  const navItems = [
+    {to:"/", title:"Home"},
+    {to:"services", title:"Services"},
+    {to:"about-us", title:"About-us"},
+    {to:"/contacts", title:"contacts"}
+  ]
+
   return (
     <motion.div
       className={`transform transition-transform duration-1000 ease-in-out ${
@@ -56,23 +63,13 @@ const Header: React.FC = () => {
                   ? "items-center text-lg lg:text-xl xl:text-2xl pt-5 font-judson font-extralight tracking-wide"
                   : "hidden xl:flex justify-between items-center text-2xl font-judson font-extralight tracking-wide"
               }`}
-              whileHover={{ scale: 1.02 }}
             >
-              <motion.li className="px-5" whileHover={{ scale: 1.1 }}>
-                <Link to={"/"}>Home</Link>
-              </motion.li>
-
-              <motion.li className="px-5" whileHover={{ scale: 1.1 }}>
-                <Link to={"/services"}>Services</Link>
-              </motion.li>
-
-              <motion.li className="px-5" whileHover={{ scale: 1.1 }}>
-                <Link to={"/wallet"}>Wallet</Link>
-              </motion.li>
-
-              <motion.li className="px-5" whileHover={{ scale: 1.1 }}>
-                <Link to={"/contacts"}>Contacts</Link>
-              </motion.li>
+              {navItems.map((item) => (
+                <motion.li className="group px-5">
+                  <Link to={item.to}>{item.title}</Link>
+                  <div className="h-[1px] bg-black w-0 group-hover:w-full transition-all duration-300"></div>
+                </motion.li>
+              ))}
             </motion.ul>
           </nav>
         </div>

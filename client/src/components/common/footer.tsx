@@ -1,81 +1,117 @@
 import { motion } from "motion/react";
-import { FaSquareXTwitter } from "react-icons/fa6";
-import { FaSquareGithub } from "react-icons/fa6";
+import { FaSquareXTwitter, FaSquareGithub } from "react-icons/fa6";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaSquareEnvelope } from "react-icons/fa6";
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo.png';
 
+const companyLinks = [
+  { name: "About", href: "/about" },
+  { name: "Features", href: "/features" },
+  { name: "Works", href: "/works" },
+  { name: "Career", href: "/career" }
+];
 
-const Footer : React.FC = () => {
+const helpLinks = [
+  { name: "Customer Support", href: "/support" },
+  { name: "Pickup Details", href: "/pickup" },
+  { name: "Terms & Conditions", href: "/terms" },
+  { name: "Privacy Policy", href: "/privacy" }
+];
 
-    return <div className="w-full h-33 s:h-55 md:h-70 bg-green-300">
-        
-        <div className="flex justify-between pt-2 md:pt-5 pl-2 md:pl-10">
-             <div className="w-40 s:w-50 md:w-80 h-25 s:h-40 md:h-42 lg:h-52 s:p-3">
-                <div className="cursor-pointer">
-                    <img className="w-30 md:w-35 lg:w-48" src={logo} alt="" />
-                </div>
+const socialLinks = [
+  { icon: <FaSquareXTwitter />, href: "https://twitter.com/sustaindev", label: "Twitter" },
+  { icon: <FaSquareGithub />, href: "https://github.com/sustaindev", label: "GitHub" },
+  { icon: <FaInstagramSquare />, href: "https://instagram.com/sustaindev", label: "Instagram" },
+  { icon: <FaSquareEnvelope />, href: "mailto:contact@sustaindev.com", label: "Email" }
+];
 
-                <div className="font-judson text-sm s:text-lg md:text-xl lg:text-2xl p-2 lg:p-4">
-                    Get paid to recycle !
-                </div>
+const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
 
-                <div className="flex justify-between px-2 md:px-0 md:justify-evenly items-center w-35 s:w-48 s:py-4">
-                     <FaSquareXTwitter className="text-lg s:text-xl md:text-2xl cursor-pointer hover:scale-120"/> 
-                     <FaSquareGithub className="text-lg s:text-xl md:text-2xl cursor-pointer hover:scale-120"/> 
-                     <FaInstagramSquare className="text-lg s:text-xl md:text-2xl cursor-pointer hover:scale-120"/> 
-                     <FaSquareEnvelope className="text-lg s:text-xl md:text-2xl cursor-pointer hover:scale-120"/> 
-                </div>
-             </div>
-            
-            <div className="flex justify-between item-center md:px-10 lg:px-0"> 
-             <div className="s:pt-2 md:p-2 w-25 h-20 md:w-40 md:h-42 lg:w-80 lg:h-52 ">
-                <div className="font-judson text-sm md:text-lg lg:text-xl font-bold place-items-center">
-                    Company
-                </div>
-                
-                <div className="font-judson text-xs s:text-sm md:text-lg lg:text-xl">
-                    <ul>
-                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>About</motion.li>
-                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>features</motion.li>
-                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>Works</motion.li>
-                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>Career</motion.li>
-                    </ul>
-                </div>
-             </div>
-     
-             <div className="s:pt-2 md:p-2 w-25 h-20 md:w-45 md:h-42 lg:w-80 lg:h-52  ">
-                <div className="font-judson text-sm md:text-lg lg:text-xl font-bold place-items-center">
-                    Help
-                </div>
-
-                <div className="font-judson text-xs s:text-sm md:text-lg lg:text-xl">
-                    <ul>
-                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>Customer Support</motion.li>
-                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>Pickup Details</motion.li>
-                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>Tersm & Conditions</motion.li>
-                        <motion.li className="cursor-pointer" whileHover={{scale:1.1}}>Privacy Policy</motion.li>
-                    </ul>
-                </div>
-             </div>
-            </div> 
-
-        </div>
-
-        <div className="w-full flex justify-center items-center">
-            <div className=" h-0.5 w-400 bg-gray-400 ">
+  return (
+    <footer className="w-full bg-green-300">
+      <div className="container mx-auto px-4 pt-6 py-2">
+        <div className="flex flex-col md:flex-row justify-between gap-8">
+          {/* Logo and Social Section */}
+          <div className="max-w-xs">
+            <div className="cursor-pointer mb-4">
+              <img className="w-32 md:w-40" src={logo} alt="SustainDev Logo" />
             </div>
+
+            <div className="font-judson text-lg md:text-xl lg:text-2xl mb-4 ml-2">
+              Get paid to recycle!
+            </div>
+
+            <div className="flex gap-8 items-center ml-2 mt-5">
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="text-xl md:text-2xl text-gray-800 hover:text-green-700"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {social.icon}
+                </motion.a>
+              ))}
+            </div>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="flex gap-8 md:gap-16">
+            {/* Company Links */}
+            <div>
+              <h3 className="font-judson text-lg md:text-xl font-bold mb-3">
+                Company
+              </h3>
+              
+              <ul className="space-y-2">
+                {companyLinks.map((link, index) => (
+                  <motion.li key={index} whileHover={{ scale: 1.05 }}>
+                    <a
+                      href={link.href}
+                      className="font-judson text-sm md:text-lg hover:text-green-700 transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Help Links */}
+            <div>
+              <h3 className="font-judson text-lg md:text-xl font-bold mb-3">
+                Help
+              </h3>
+              
+              <ul className="space-y-2">
+                {helpLinks.map((link, index) => (
+                  <motion.li key={index} whileHover={{ scale: 1.05 }}>
+                    <a
+                      href={link.href}
+                      className="font-judson text-sm md:text-lg hover:text-green-700 transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
 
-        <div className="flex justify-center items-center text-[10px] s:text-sm py-1 s:py-3">
-             © Copyright 2025, All Rights Reserved by SustainDev
+        <div className="w-full flex justify-center items-center my-2">
+          <div className="h-px w-full max-w-4xl bg-gray-400"></div>
         </div>
 
-    </div>
-}
+        <div className="text-center text-sm py-2">
+          © Copyright {currentYear}, All Rights Reserved by SustainDev
+        </div>
+      </div>
+    </footer>
+  );
+};
 
 export default Footer;
-
-
-
-
