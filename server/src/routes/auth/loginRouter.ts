@@ -15,9 +15,10 @@ export default loginRouter.post("/", async (req, res) => {
       return;
     }
 
-    const user = await userModel.findOne({ email });
+    const user = await userModel.findOne({ email: email }).select("+password"); //we need to to select the password (defalut the the select is false for password in userSchema)
 
     if (user) {
+      
       const authenticatedUser = await bcrypt.compare(password, user.password);
 
       if (authenticatedUser) {
@@ -46,6 +47,5 @@ export default loginRouter.post("/", async (req, res) => {
   } catch (e) {
     console.error("error :", e);
     res.status(500).json({ error: "internal server error !" });
-    process.exit(1);
   }
 });
