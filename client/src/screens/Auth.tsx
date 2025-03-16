@@ -3,35 +3,36 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { HiOutlineArrowLeft } from "react-icons/hi";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../api";
 
 // Form component to reduce duplication between login/signup
 interface AuthFormProps {
-  type: 'login' | 'signup';
+  type: "login" | "signup";
 }
 
 const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
   const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   // Form state
   const [formState, setFormState] = useState({
-    username: { value: '', isValid: true, errorMessage: '' },
-    email: { value: '', isValid: true, errorMessage: '' },
-    password: { value: '', isValid: true, errorMessage: '' },
-    confirmPassword: { value: '', isValid: true, errorMessage: '' }
+    username: { value: "", isValid: true, errorMessage: "" },
+    email: { value: "", isValid: true, errorMessage: "" },
+    password: { value: "", isValid: true, errorMessage: "" },
+    confirmPassword: { value: "", isValid: true, errorMessage: "" },
   });
 
   // Handle input changes
   const handleInputChange = (field: keyof typeof formState, value: string) => {
-    setFormState(prev => ({
+    setFormState((prev) => ({
       ...prev,
       [field]: {
         ...prev[field],
         value,
         isValid: true,
-        errorMessage: ''
-      }
+        errorMessage: "",
+      },
     }));
   };
 
@@ -39,48 +40,51 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
   const validateForm = () => {
     let isValid = true;
     const newFormState = { ...formState };
-    
+
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formState.email.value)) {
       newFormState.email = {
         ...newFormState.email,
         isValid: false,
-        errorMessage: 'Please enter a valid email address'
+        errorMessage: "Please enter a valid email address",
       };
       isValid = false;
     }
-    
+
     // Password validation
     if (formState.password.value.length < 8) {
       newFormState.password = {
         ...newFormState.password,
         isValid: false,
-        errorMessage: 'Password must be at least 8 characters'
+        errorMessage: "Password must be at least 8 characters",
       };
       isValid = false;
     }
-    
+
     // Username validation (for signup only)
-    if (type === 'signup' && formState.username.value.length < 3) {
+    if (type === "signup" && formState.username.value.length < 3) {
       newFormState.username = {
         ...newFormState.username,
         isValid: false,
-        errorMessage: 'Username must be at least 3 characters'
+        errorMessage: "Username must be at least 3 characters",
       };
       isValid = false;
     }
-    
+
     // Confirm password validation (for signup only)
-    if (type === 'signup' && formState.password.value !== formState.confirmPassword.value) {
+    if (
+      type === "signup" &&
+      formState.password.value !== formState.confirmPassword.value
+    ) {
       newFormState.confirmPassword = {
         ...newFormState.confirmPassword,
         isValid: false,
-        errorMessage: 'Passwords do not match'
+        errorMessage: "Passwords do not match",
       };
       isValid = false;
     }
-    
+
     setFormState(newFormState);
     return isValid;
   };
@@ -88,20 +92,35 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
-    
+
     setIsSubmitting(true);
-    
+
     try {
-      // Mock API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Success - redirect to home or dashboard
-      console.log('Form submitted:', type, formState);
-      navigate('/dashboard');
+      //API call
+      {
+        type === "signup"
+          ? async () => {
+              await api.post("/signup", {
+                username: formState.username.value,
+                email: formState.email.value,
+                password: formState.password.value,
+              });
+              console.log("signed up");
+              navigate("/login");
+            }
+          : async () => {
+              await api.post("/login", {
+                email: formState.email.value,
+                password: formState.password.value,
+              });
+              console.log("logged in");
+              navigate("/");
+            };
+      }
     } catch (error) {
-      console.error('Submission error:', error);
+      console.error("Submission error:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -110,15 +129,15 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
   // Google auth handler
   const handleGoogleAuth = async () => {
     try {
-      console.log('Google auth initiated');
+      console.log("Google auth initiated");
       // Implement Google auth logic here
     } catch (error) {
-      console.error('Google auth error:', error);
+      console.error("Google auth error:", error);
     }
   };
 
-  const isLogin = type === 'login';
-  const title = isLogin ? 'Login' : 'Sign Up';
+  const isLogin = type === "login";
+  const title = isLogin ? "Login" : "Sign Up";
 
   return (
     <div className="w-full h-screen flex justify-center items-center bg-gradient-to-b from-green-gradient-1 to bg-green-gradient-2">
@@ -142,20 +161,27 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
 
         {/* Form */}
         <div className="flex justify-center items-center py-6 xs:py-10">
-          <form onSubmit={handleSubmit} className="flex-col space-y-3 xs:space-y-5 w-full">
+          <form
+            onSubmit={handleSubmit}
+            className="flex-col space-y-3 xs:space-y-5 w-full"
+          >
             {!isLogin && (
               <div className="relative">
                 <input
                   type="text"
                   placeholder="Username"
                   value={formState.username.value}
-                  onChange={(e) => handleInputChange('username', e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("username", e.target.value)
+                  }
                   className={`w-full bg-white h-10 rounded-lg px-3 text-sm xs:text-lg font-judson ${
-                    !formState.username.isValid ? 'border-2 border-red-500' : ''
+                    !formState.username.isValid ? "border-2 border-red-500" : ""
                   }`}
                 />
                 {!formState.username.isValid && (
-                  <p className="text-red-500 text-xs mt-1">{formState.username.errorMessage}</p>
+                  <p className="text-red-500 text-xs mt-1">
+                    {formState.username.errorMessage}
+                  </p>
                 )}
               </div>
             )}
@@ -165,13 +191,15 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
                 type="email"
                 placeholder="Email address"
                 value={formState.email.value}
-                onChange={(e) => handleInputChange('email', e.target.value)}
+                onChange={(e) => handleInputChange("email", e.target.value)}
                 className={`w-full bg-white h-10 rounded-lg px-3 text-sm xs:text-lg font-judson ${
-                  !formState.email.isValid ? 'border-2 border-red-500' : ''
+                  !formState.email.isValid ? "border-2 border-red-500" : ""
                 }`}
               />
               {!formState.email.isValid && (
-                <p className="text-red-500 text-xs mt-1">{formState.email.errorMessage}</p>
+                <p className="text-red-500 text-xs mt-1">
+                  {formState.email.errorMessage}
+                </p>
               )}
             </div>
 
@@ -180,9 +208,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
                 type={passwordVisible ? "text" : "password"}
                 placeholder="Password"
                 value={formState.password.value}
-                onChange={(e) => handleInputChange('password', e.target.value)}
+                onChange={(e) => handleInputChange("password", e.target.value)}
                 className={`w-full bg-white h-10 rounded-lg px-3 pr-10 text-sm xs:text-lg font-judson ${
-                  !formState.password.isValid ? 'border-2 border-red-500' : ''
+                  !formState.password.isValid ? "border-2 border-red-500" : ""
                 }`}
               />
               <button
@@ -198,7 +226,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
                 )}
               </button>
               {!formState.password.isValid && (
-                <p className="text-red-500 text-xs mt-1">{formState.password.errorMessage}</p>
+                <p className="text-red-500 text-xs mt-1">
+                  {formState.password.errorMessage}
+                </p>
               )}
             </div>
 
@@ -208,16 +238,22 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
                   type={passwordVisible ? "text" : "password"}
                   placeholder="Confirm password"
                   value={formState.confirmPassword.value}
-                  onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("confirmPassword", e.target.value)
+                  }
                   className={`w-full bg-white h-10 rounded-lg px-3 pr-10 text-sm xs:text-lg font-judson ${
-                    !formState.confirmPassword.isValid ? 'border-2 border-red-500' : ''
+                    !formState.confirmPassword.isValid
+                      ? "border-2 border-red-500"
+                      : ""
                   }`}
                 />
                 <button
                   type="button"
                   onClick={() => setPasswordVisible(!passwordVisible)}
                   className="absolute top-0 right-0 h-10 w-10 flex items-center justify-center"
-                  aria-label={passwordVisible ? "Hide password" : "Show password"}
+                  aria-label={
+                    passwordVisible ? "Hide password" : "Show password"
+                  }
                 >
                   {passwordVisible ? (
                     <FaEye color="gray" className="cursor-pointer" />
@@ -226,14 +262,19 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
                   )}
                 </button>
                 {!formState.confirmPassword.isValid && (
-                  <p className="text-red-500 text-xs mt-1">{formState.confirmPassword.errorMessage}</p>
+                  <p className="text-red-500 text-xs mt-1">
+                    {formState.confirmPassword.errorMessage}
+                  </p>
                 )}
               </div>
             )}
 
             {isLogin && (
               <div className="text-right">
-                <Link to="/forgot-password" className="text-sm text-green-700 hover:underline">
+                <Link
+                  to="/forgot-password"
+                  className="text-sm text-green-700 hover:underline"
+                >
                   Forgot password?
                 </Link>
               </div>
@@ -245,15 +286,15 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
                   type="submit"
                   disabled={isSubmitting}
                   className={`flex justify-center text-white items-center text-lg xs:text-xl font-judson w-24 xs:w-28 h-10 rounded-lg ${
-                    isSubmitting 
-                      ? 'bg-green-300 cursor-not-allowed' 
-                      : 'bg-green-500 hover:bg-green-600 transition-colors'
+                    isSubmitting
+                      ? "bg-green-300 cursor-not-allowed"
+                      : "bg-green-500 hover:bg-green-600 transition-colors"
                   }`}
                 >
                   {isSubmitting ? (
                     <span className="inline-block animate-pulse">...</span>
                   ) : (
-                    'Submit'
+                    "Submit"
                   )}
                 </button>
 
@@ -263,15 +304,21 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
                   className="flex items-center justify-center gap-2 bg-white rounded-lg p-2 hover:bg-gray-100 transition-colors"
                 >
                   <FcGoogle className="text-2xl xs:text-3xl" />
-                  <span className="hidden sm:inline text-sm">Continue with Google</span>
+                  <span className="hidden sm:inline text-sm">
+                    Continue with Google
+                  </span>
                 </button>
               </div>
 
               <div className="text-sm xs:text-lg font-judson font-light pt-3">
                 {isLogin ? (
-                  <Link to="/signup" className="hover:underline">Don't have an account?</Link>
+                  <Link to="/signup" className="hover:underline">
+                    Don't have an account?
+                  </Link>
                 ) : (
-                  <Link to="/login" className="hover:underline">Already have an account?</Link>
+                  <Link to="/login" className="hover:underline">
+                    Already have an account?
+                  </Link>
                 )}
               </div>
             </div>
@@ -282,12 +329,12 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
   );
 };
 
-// Specific login component
+// login component
 export const LoginScreen: React.FC = () => {
   return <AuthForm type="login" />;
 };
 
-// Specific signup component
+// signup component
 export const SignupScreen: React.FC = () => {
   return <AuthForm type="signup" />;
 };
