@@ -98,33 +98,29 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
     setIsSubmitting(true);
 
     try {
-      //API call
-      {
-        type === "signup"
-          ? async () => {
-              await api.post("/signup", {
-                username: formState.username.value,
-                email: formState.email.value,
-                password: formState.password.value,
-              });
-              console.log("signed up");
-              navigate("/login");
-            }
-          : async () => {
-              await api.post("/login", {
-                email: formState.email.value,
-                password: formState.password.value,
-              });
-              console.log("logged in");
-              navigate("/");
-            };
+      // API call based on type
+      if (type === "signup") {
+        await api.post("/signup", {
+          username: formState.username.value,
+          email: formState.email.value,
+          password: formState.password.value,
+        });
+        console.log("Signed up");
+        navigate("/login");
+      } else {
+        await api.post("/login", {
+          email: formState.email.value,
+          password: formState.password.value,
+        });
+        console.log("Logged in");
+        navigate("/");
       }
     } catch (error) {
       console.error("Submission error:", error);
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }
 
   // Google auth handler
   const handleGoogleAuth = async () => {
