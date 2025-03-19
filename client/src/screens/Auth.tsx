@@ -3,7 +3,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { HiOutlineArrowLeft } from "react-icons/hi";
 import { Link, useNavigate } from "react-router-dom";
-import api from "../api";
+import { useAuth } from "../context/authContext";
 
 // Form component to reduce duplication between login/signup
 interface AuthFormProps {
@@ -15,6 +15,8 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const { signup, login, checkAuth, isAuthenticated, isLoading, user } = useAuth(); 
+  
   // Form state
   const [formState, setFormState] = useState({
     username: { value: "", isValid: true, errorMessage: "" },
@@ -98,21 +100,18 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
     setIsSubmitting(true);
 
     try {
-      // API call based on type
       if (type === "signup") {
-        await api.post("/signup", {
-          username: formState.username.value,
-          email: formState.email.value,
-          password: formState.password.value,
-        });
-        console.log("Signed up");
+        await signup(
+          formState.username.value,
+          formState.email.value,
+          formState.password.value,
+        );
         navigate("/login");
       } else {
-        await api.post("/login", {
-          email: formState.email.value,
-          password: formState.password.value,
-        });
-        console.log("Logged in");
+        await login(
+          formState.email.value,
+          formState.password.value,
+        );
         navigate("/");
       }
     } catch (error) {

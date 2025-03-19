@@ -3,9 +3,11 @@ import Home from "./screens/home";
 import { LoginScreen, SignupScreen } from "./screens/Auth";
 import Wallet from "./components/home/wallet";
 import SchedulePickup from "./components/home/schedulePickup";
+import { AuthContextProvider } from "./context/authContext";
 
 const App: React.FC = () => {
   return (
+    <AuthContextProvider>
     <Router>
       <Routes>
         <Route path="/" element={<Home />}>
@@ -16,6 +18,7 @@ const App: React.FC = () => {
         <Route path="/login" element={<LoginScreen />} />
       </Routes>
     </Router>
+    </AuthContextProvider>
   );
 };
 

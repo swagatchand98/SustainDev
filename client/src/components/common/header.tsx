@@ -6,10 +6,17 @@ import { NavBarContext } from "../../context/navBarContext";
 import { motion } from "motion/react";
 import { useContext } from "react";
 import logo from '../../assets/logo.png'
+import { useAuth } from "../../context/authContext";
 
 const Header: React.FC = () => {
   const { isScrolled } = useContext(IsScrolledContext);
   const { isNavBarOpen, toggleNavBar } = useContext(NavBarContext);
+
+  const { isAuthenticated, isLoading, user } = useAuth(); 
+
+  if(isAuthenticated){
+    console.log(user);
+  }
 
   const navItems = [
     {to:"/", title:"Home"},
@@ -74,7 +81,8 @@ const Header: React.FC = () => {
           </nav>
         </div>
 
-        <motion.div
+        {isAuthenticated ? (
+          <motion.div
           className={`${
             isNavBarOpen
               ? "flex justify-center w-30 h-7 md:w-40 xl:h-8 m-3 rounded-full text-sm md:text-lg xl:text-xl font-extralight items-center font-judson"
@@ -83,14 +91,31 @@ const Header: React.FC = () => {
           initial={{ border: "1px solid black" }}
           whileHover={{
             backgroundColor: "#1D820C",
-            scale: 1.1,
             color: "white",
             border: "none",
           }}
           transition={{ duration: 0.2 }}
         >
-          <Link to={"/signup"}>Sign Up / Log in</Link>
+          <Link to={"/signup"}>{`hi ${user.username}`}</Link>
         </motion.div>
+        ) : (
+                  <motion.div
+                  className={`${
+                    isNavBarOpen
+                      ? "flex justify-center w-30 h-7 md:w-40 xl:h-8 m-3 rounded-full text-sm md:text-lg xl:text-xl font-extralight items-center font-judson"
+                      : "hidden xl:flex justify-center w-40 h-8 rounded-full text-xl font-extralight items-center font-judson"
+                  }`}
+                  initial={{ border: "1px solid black" }}
+                  whileHover={{
+                    backgroundColor: "#1D820C",
+                    color: "white",
+                    border: "none",
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Link to={"/signup"}>Sign Up / Log in</Link>
+                </motion.div>
+        )}
 
         <div
           onClick={toggleNavBar}
