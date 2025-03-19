@@ -34,7 +34,7 @@ const ChooseWasteCard: React.FC<ChooseWasteCardProps> = memo(({
     <motion.div
       className="w-35 h-40 md:w-100 md:h-60 items-center border border-gray-300 rounded-2xl overflow-hidden shadow-md bg-white bg-opacity-90"
       animate={{ boxShadow: "10px 10px 25px -5px rgba(0, 0, 0, 0.2)" }}
-      whileHover={{ scale: 1.05, boxShadow: "10px 10px 25px -5px rgba(0, 0, 0, 0.5)" }}
+      whileHover={{ scale: 1.01, boxShadow: "10px 10px 25px -5px rgba(0, 0, 0, 0.5)" }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
 

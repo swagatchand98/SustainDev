@@ -8,16 +8,16 @@ import { AuthContextProvider } from "./context/authContext";
 const App: React.FC = () => {
   return (
     <AuthContextProvider>
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />}>
-          <Route path="wallet" element={<Wallet />}/>
-        </Route>
-        <Route path="/Schedule-Pickup" element={<SchedulePickup/>}/>
-        <Route path="/signup" element={<SignupScreen />} />
-        <Route path="/login" element={<LoginScreen />} />
-      </Routes>
-    </Router>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />}>
+            <Route path="wallet" element={<Wallet />} />
+          </Route>
+          <Route path="/schedule-pickup" element={<SchedulePickup />} />
+          <Route path="/signup" element={<SignupScreen />} />
+          <Route path="/login" element={<LoginScreen />} />
+        </Routes>
+      </Router>
     </AuthContextProvider>
   );
 };

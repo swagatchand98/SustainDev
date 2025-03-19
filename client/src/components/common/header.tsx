@@ -4,26 +4,33 @@ import { Link } from "react-router-dom";
 import IsScrolledContext from "../../context/IsScrolledContext";
 import { NavBarContext } from "../../context/navBarContext";
 import { motion } from "motion/react";
-import { useContext } from "react";
-import logo from '../../assets/logo.png'
+import { useContext, useEffect, useState } from "react";
+import logo from "../../assets/logo.png";
 import { useAuth } from "../../context/authContext";
 
 const Header: React.FC = () => {
   const { isScrolled } = useContext(IsScrolledContext);
   const { isNavBarOpen, toggleNavBar } = useContext(NavBarContext);
 
-  const { isAuthenticated, isLoading, user } = useAuth(); 
+  const { isAuthenticated, isLoading, user } = useAuth();
 
-  if(isAuthenticated){
-    console.log(user);
-  }
+  const [navItems, setNavItems] = useState([
+    { to: "/", title: "Home" },
+    { to: "/services", title: "Services" },
+    { to: "/about-us", title: "About-us" },
+    { to: "/contacts", title: "contacts" },
+  ]);
 
-  const navItems = [
-    {to:"/", title:"Home"},
-    {to:"services", title:"Services"},
-    {to:"about-us", title:"About-us"},
-    {to:"/contacts", title:"contacts"}
-  ]
+  useEffect(() => {
+    if (isAuthenticated) {
+      setNavItems([
+        { to: "/", title: "Home" },
+        { to: "/services", title: "Services" },
+        { to: "/wallet", title: "Wallet" },
+        { to: "/contacts", title: "contacts" },
+      ]);
+    }
+  }, []);
 
   return (
     <motion.div
@@ -32,9 +39,9 @@ const Header: React.FC = () => {
           ? "fixed w-full h-60 md:h-60 xl:h-60 bg-transparent flex justify-center items-center pt-15 xs:pt-10 sm:pt-7 md:pt-10 xl:py-15"
           : "fixed w-full h-12 md:h-15 xl:h-17 bg-transparent flex justify-center items-center pt-15 xs:pt-10 sm:pt-7 md:pt-10 xl:py-15"
       }`}
-      initial={{opacity: 0}}
-      animate={{opacity: 1}}
-      transition={{duration: 1, delay: 0.3}}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, delay: 0.3 }}
     >
       <motion.div
         className={`transform transition-transform duration-1000 ease-in-out ${
@@ -55,11 +62,7 @@ const Header: React.FC = () => {
         transition={{ duration: 0.3 }}
       >
         <div className="flex items-center cursor-pointer">
-          <img
-            className="w-30 md:w-40 xl:w-48"
-            src={logo}
-            alt="sustaindev"
-          />
+          <img className="w-30 md:w-40 xl:w-48" src={logo} alt="sustaindev" />
         </div>
 
         <div className="">
@@ -83,38 +86,38 @@ const Header: React.FC = () => {
 
         {isAuthenticated ? (
           <motion.div
-          className={`${
-            isNavBarOpen
-              ? "flex justify-center w-30 h-7 md:w-40 xl:h-8 m-3 rounded-full text-sm md:text-lg xl:text-xl font-extralight items-center font-judson"
-              : "hidden xl:flex justify-center w-40 h-8 rounded-full text-xl font-extralight items-center font-judson"
-          }`}
-          initial={{ border: "1px solid black" }}
-          whileHover={{
-            backgroundColor: "#1D820C",
-            color: "white",
-            border: "none",
-          }}
-          transition={{ duration: 0.2 }}
-        >
-          <Link to={"/signup"}>{`hi ${user.username}`}</Link>
-        </motion.div>
+            className={`${
+              isNavBarOpen
+                ? "flex justify-center w-30 h-7 md:w-40 xl:h-8 m-3 rounded-full text-sm md:text-lg xl:text-xl font-extralight items-center font-judson"
+                : "hidden xl:flex justify-center w-40 h-8 rounded-full text-xl font-extralight items-center font-judson"
+            }`}
+            initial={{ border: "1px solid black" }}
+            whileHover={{
+              backgroundColor: "#1D820C",
+              color: "white",
+              border: "none",
+            }}
+            transition={{ duration: 0.2 }}
+          >
+            <Link to={"/profile"}>{`hi ${user.username}`}</Link>
+          </motion.div>
         ) : (
-                  <motion.div
-                  className={`${
-                    isNavBarOpen
-                      ? "flex justify-center w-30 h-7 md:w-40 xl:h-8 m-3 rounded-full text-sm md:text-lg xl:text-xl font-extralight items-center font-judson"
-                      : "hidden xl:flex justify-center w-40 h-8 rounded-full text-xl font-extralight items-center font-judson"
-                  }`}
-                  initial={{ border: "1px solid black" }}
-                  whileHover={{
-                    backgroundColor: "#1D820C",
-                    color: "white",
-                    border: "none",
-                  }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Link to={"/signup"}>Sign Up / Log in</Link>
-                </motion.div>
+          <motion.div
+            className={`${
+              isNavBarOpen
+                ? "flex justify-center w-30 h-7 md:w-40 xl:h-8 m-3 rounded-full text-sm md:text-lg xl:text-xl font-extralight items-center font-judson"
+                : "hidden xl:flex justify-center w-40 h-8 rounded-full text-xl font-extralight items-center font-judson"
+            }`}
+            initial={{ border: "1px solid black" }}
+            whileHover={{
+              backgroundColor: "#1D820C",
+              color: "white",
+              border: "none",
+            }}
+            transition={{ duration: 0.2 }}
+          >
+            <Link to={"/login"}>Sign Up / Log in</Link>
+          </motion.div>
         )}
 
         <div

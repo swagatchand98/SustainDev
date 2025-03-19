@@ -7,6 +7,7 @@ import connectDB from "./config/db";
 import signupRouter from "./routes/auth/signupRouter"
 import loginRouter from "./routes/auth/loginRouter";
 import userRouter from "./routes/user/userRouter";
+import logoutRouter from "./routes/auth/logoutRouter";
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(cookieParser());
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/user', userRouter);
+app.use('/logout', logoutRouter);
 
 const startServer = async() => {
     try{

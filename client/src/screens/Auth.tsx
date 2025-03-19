@@ -15,8 +15,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { signup, login, checkAuth, isAuthenticated, isLoading, user } = useAuth(); 
-  
+  const { signup, login, checkAuth, isAuthenticated, isLoading, user } =
+    useAuth();
+
   // Form state
   const [formState, setFormState] = useState({
     username: { value: "", isValid: true, errorMessage: "" },
@@ -104,14 +105,11 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
         await signup(
           formState.username.value,
           formState.email.value,
-          formState.password.value,
+          formState.password.value
         );
         navigate("/login");
       } else {
-        await login(
-          formState.email.value,
-          formState.password.value,
-        );
+        await login(formState.email.value, formState.password.value);
         navigate("/");
       }
     } catch (error) {
@@ -119,7 +117,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
     } finally {
       setIsSubmitting(false);
     }
-  }
+  };
 
   // Google auth handler
   const handleGoogleAuth = async () => {
