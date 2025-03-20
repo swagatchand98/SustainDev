@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import api from "../api";
+import { useNavigate } from "react-router-dom";
 
 interface authContextType {
     user: any | null,
@@ -24,6 +25,7 @@ export const AuthContextProvider: React.FC<{children: ReactNode}> = ({ children 
           const response = await api.get('/user');
           setUser(response.data);
         } catch (error) {
+          console.error("Authentication check failed:", error);
           setUser(null);
         } finally {
           setIsLoading(false);

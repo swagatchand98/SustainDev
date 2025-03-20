@@ -15,7 +15,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { signup, login, checkAuth, isAuthenticated, isLoading, user } =
+  const { signup, login } =
     useAuth();
 
   // Form state

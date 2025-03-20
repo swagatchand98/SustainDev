@@ -7,12 +7,13 @@ import { motion } from "motion/react";
 import { useContext, useEffect, useState } from "react";
 import logo from "../../assets/logo.png";
 import { useAuth } from "../../context/authContext";
+import api from "../../api";
 
 const Header: React.FC = () => {
   const { isScrolled } = useContext(IsScrolledContext);
   const { isNavBarOpen, toggleNavBar } = useContext(NavBarContext);
 
-  const { isAuthenticated, isLoading, user } = useAuth();
+  const { isAuthenticated, user, logout } = useAuth();
 
   const [navItems, setNavItems] = useState([
     { to: "/", title: "Home" },
@@ -30,7 +31,11 @@ const Header: React.FC = () => {
         { to: "/contacts", title: "contacts" },
       ]);
     }
-  }, []);
+  }, [isAuthenticated]);
+
+  const handleLogOut = async() => {
+    await logout();
+  }
 
   return (
     <motion.div
@@ -85,7 +90,8 @@ const Header: React.FC = () => {
         </div>
 
         {isAuthenticated ? (
-          <motion.div
+          <div>
+            <motion.div
             className={`${
               isNavBarOpen
                 ? "flex justify-center w-30 h-7 md:w-40 xl:h-8 m-3 rounded-full text-sm md:text-lg xl:text-xl font-extralight items-center font-judson"
@@ -101,6 +107,12 @@ const Header: React.FC = () => {
           >
             <Link to={"/profile"}>{`hi ${user.username}`}</Link>
           </motion.div>
+
+          <motion.div>
+            <li><Link to={'/profile'}>Profile</Link></li>
+            <li onClick={() => handleLogOut()}>Logout</li>
+          </motion.div>
+          </div>
         ) : (
           <motion.div
             className={`${
