@@ -90,7 +90,7 @@ const Header: React.FC = () => {
         </div>
 
         {isAuthenticated ? (
-          <div>
+          <div className="relative group">
             <motion.div
             className={`${
               isNavBarOpen
@@ -98,19 +98,15 @@ const Header: React.FC = () => {
                 : "hidden xl:flex justify-center w-40 h-8 rounded-full text-xl font-extralight items-center font-judson"
             }`}
             initial={{ border: "1px solid black" }}
-            whileHover={{
-              backgroundColor: "#1D820C",
-              color: "white",
-              border: "none",
-            }}
             transition={{ duration: 0.2 }}
           >
             <Link to={"/profile"}>{`hi ${user.username}`}</Link>
           </motion.div>
 
-          <motion.div>
-            <li><Link to={'/profile'}>Profile</Link></li>
-            <li onClick={() => handleLogOut()}>Logout</li>
+          <motion.div className="list-none shadow-xl absolute p-5 pt-7 space-y-2 hidden group-hover:block w-40 rounded-2xl transition-all duration-1000">
+            <li className="cursor-pointer"><Link to={'/profile'}>Profile</Link></li>
+            <div className="h-[1px] w-full bg-gray-400"></div>
+            <li className="cursor-pointer" onClick={() => handleLogOut()}>Logout</li>
           </motion.div>
           </div>
         ) : (
