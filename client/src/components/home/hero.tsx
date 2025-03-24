@@ -146,9 +146,7 @@ const Hero: React.FC = () => {
             }}
             aria-label="Start recycling and earning"
             onClick={() => {
-              isAuthenticated
-                ? navigate("/schedule-pickup")
-                : navigate("/login");
+                 navigate("/schedule-pickup")
             }}
           >
             Start Recycling & Earning

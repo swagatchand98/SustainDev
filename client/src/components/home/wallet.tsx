@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { FcSalesPerformance } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
+import api from "../../api";
 
 interface Transaction {
   date: string;
@@ -10,13 +11,20 @@ interface Transaction {
 
 const Wallet: React.FC = () => {
   const navigate = useNavigate();
-  
-  const [transactions] = useState<Transaction[]>([
-    { date: "27/02/2025 : 19:34", amount: 10 },
-    { date: "25/02/2025 : 14:22", amount: 15 },
-    { date: "20/02/2025 : 09:15", amount: 25 },
-    { date: "15/02/2025 : 11:30", amount: 50 },
-  ]);
+  const [transactions, setTransaction] = useState<Transaction[]>([]);
+
+  const fetchTransactionData = async() => {
+    try{
+      const response = await api.get('/user/wallet');
+      setTransaction(response.data);
+    }catch(e){
+      console.error("Error fetching transactions:", e);
+    }
+  }
+
+  useEffect(() => {
+    fetchTransactionData;
+  },[])
 
   return (
     <div className="fixed inset-0 flex justify-center items-center w-full h-screen bg-black/20 backdrop-blur-sm z-50">
