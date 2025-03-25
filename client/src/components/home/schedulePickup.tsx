@@ -8,6 +8,7 @@ import metal from "../../assets/metal.jpg";
 import glass from "../../assets/glass.jpg";
 import eWaste from "../../assets/e-waste.jpg";
 import textile from "../../assets/textile.jpg";
+import api from "../../api";
 
 interface WasteItem {
   id: string;
@@ -32,6 +33,14 @@ const SchedulePickup: React.FC = () => {
       quantity: 0,
     },
   ]);
+
+  const fetchWasteItems = async() => {
+    try{
+      const response = await api.post('/user/wallet',{wasteItems});
+    }catch(e){
+      console.error("Error fetching transactions:", e);
+    }
+  }
 
   const totalOrderValue = wasteItems.reduce(
     (total, item) => total + item.price * item.quantity,
